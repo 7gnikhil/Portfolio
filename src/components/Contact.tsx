@@ -59,7 +59,7 @@ export const Contact = () => {
             particleCount: 90,
             spread: 75,
             origin: { y: 0.6 },
-            colors: ['#2563eb', '#7c3aed', '#06b6d4'],
+            colors: ['#f59e0b', '#3b82f6', '#10b981'],
           });
         } catch (err) {
           // ignore
@@ -73,7 +73,7 @@ export const Contact = () => {
           particleCount: 90,
           spread: 75,
           origin: { y: 0.6 },
-          colors: ['#2563eb', '#7c3aed', '#06b6d4'],
+          colors: ['#f59e0b', '#3b82f6', '#10b981'],
         });
       } catch (e) {
         // ignore
@@ -82,43 +82,51 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-slate-50 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 sm:py-32 bg-[#07090e] text-white relative overflow-hidden">
+      {/* Soft Ambient Light */}
+      <div className="absolute top-1/3 left-10 w-[550px] h-[550px] bg-gradient-to-tr from-amber-500/10 via-blue-600/5 to-transparent blur-[150px] pointer-events-none rounded-full" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider font-mono border border-blue-200/60">
+        <div className="max-w-3xl mb-14 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-xs font-mono tracking-widest uppercase backdrop-blur-md">
             <Mail className="w-3.5 h-3.5" />
-            <span>Get In Touch</span>
+            <span>05 / CONTACT & CONNECT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Let's Build Something Meaningful
+
+          <h2 className="font-syne text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+            Let's Build Something <br />
+            <span className="font-serif-accent italic font-normal text-amber-400">
+              Extraordinary
+            </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Interested in working together, discussing a project, or connecting about entry-level software/AI engineering opportunities? I'd love to hear from you.
+
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Interested in working together, discussing a project, or connecting about entry-level AI/ML and software engineering opportunities? I'd love to hear from you.
           </p>
         </div>
 
         {/* Bento Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Details Column */}
           <div className="lg:col-span-5 space-y-4">
             
             {/* Email Card */}
-            <div className="bento-card p-5 hover:border-blue-300 transition-colors">
+            <div className="bg-[#0d1017] rounded-3xl p-6 border border-white/10 hover:border-amber-400/40 transition-colors shadow-2xl">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 text-amber-400 flex items-center justify-center font-bold shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono block">
-                      Email Address
+                    <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                      EMAIL ADDRESS
                     </span>
                     <a
                       href={`mailto:${PERSONAL_INFO.email}`}
-                      className="block text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate"
+                      className="block text-sm font-mono font-bold text-white hover:text-amber-400 transition-colors truncate"
                     >
                       {PERSONAL_INFO.email}
                     </a>
@@ -127,12 +135,12 @@ export const Contact = () => {
 
                 <button
                   onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
-                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors shrink-0 cursor-pointer"
+                  className="p-2.5 rounded-xl hover:bg-white/10 text-slate-400 hover:text-white transition-colors shrink-0 cursor-pointer"
                   title="Copy email to clipboard"
                   aria-label="Copy email"
                 >
                   {copiedField === 'email' ? (
-                    <CheckCircle2 className="w-4.5 h-4.5 text-emerald-500" />
+                    <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400" />
                   ) : (
                     <Copy className="w-4.5 h-4.5" />
                   )}
@@ -141,19 +149,19 @@ export const Contact = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="bento-card p-5 hover:border-blue-300 transition-colors">
+            <div className="bg-[#0d1017] rounded-3xl p-6 border border-white/10 hover:border-amber-400/40 transition-colors shadow-2xl">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 text-amber-400 flex items-center justify-center font-bold shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono block">
-                      Phone / WhatsApp
+                    <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                      PHONE / WHATSAPP
                     </span>
                     <a
                       href={`tel:${PERSONAL_INFO.phone.replace(/\s+/g, '')}`}
-                      className="block text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate"
+                      className="block text-sm font-mono font-bold text-white hover:text-amber-400 transition-colors truncate"
                     >
                       {PERSONAL_INFO.phone}
                     </a>
@@ -162,12 +170,12 @@ export const Contact = () => {
 
                 <button
                   onClick={() => handleCopy(PERSONAL_INFO.phone, 'phone')}
-                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors shrink-0 cursor-pointer"
+                  className="p-2.5 rounded-xl hover:bg-white/10 text-slate-400 hover:text-white transition-colors shrink-0 cursor-pointer"
                   title="Copy phone number"
                   aria-label="Copy phone"
                 >
                   {copiedField === 'phone' ? (
-                    <CheckCircle2 className="w-4.5 h-4.5 text-emerald-500" />
+                    <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400" />
                   ) : (
                     <Copy className="w-4.5 h-4.5" />
                   )}
@@ -176,21 +184,21 @@ export const Contact = () => {
             </div>
 
             {/* LinkedIn Profile */}
-            <div className="bento-card p-5 hover:border-blue-300 transition-colors">
+            <div className="bg-[#0d1017] rounded-3xl p-6 border border-white/10 hover:border-amber-400/40 transition-colors shadow-2xl">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 text-amber-400 flex items-center justify-center font-bold shrink-0">
                     <LinkedinIcon className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono block">
-                      LinkedIn Profile
+                    <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                      LINKEDIN PROFILE
                     </span>
                     <a
                       href={PERSONAL_INFO.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate"
+                      className="block text-sm font-mono font-bold text-white hover:text-amber-400 transition-colors truncate"
                     >
                       {PERSONAL_INFO.linkedinDisplay}
                     </a>
@@ -200,21 +208,21 @@ export const Contact = () => {
             </div>
 
             {/* GitHub Profile */}
-            <div className="bento-card p-5 hover:border-blue-300 transition-colors">
+            <div className="bg-[#0d1017] rounded-3xl p-6 border border-white/10 hover:border-amber-400/40 transition-colors shadow-2xl">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center font-bold shrink-0">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center font-bold shrink-0">
                     <GithubIcon className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono block">
-                      GitHub Profile
+                    <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                      GITHUB PROFILE
                     </span>
                     <a
                       href={PERSONAL_INFO.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors truncate"
+                      className="block text-sm font-mono font-bold text-white hover:text-amber-400 transition-colors truncate"
                     >
                       {PERSONAL_INFO.githubDisplay}
                     </a>
@@ -223,57 +231,57 @@ export const Contact = () => {
               </div>
             </div>
 
-            {/* Email Notification Setup Badge */}
-            <div className="p-4.5 rounded-2xl bg-blue-50/80 border border-blue-200/80 space-y-1 text-xs text-blue-900">
-              <div className="flex items-center gap-1.5 font-bold text-blue-800">
-                <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
+            {/* Notification Badge */}
+            <div className="p-5 rounded-3xl bg-amber-400/10 border border-amber-400/30 space-y-1 text-xs text-amber-300">
+              <div className="flex items-center gap-2 font-mono font-bold text-amber-400 uppercase">
+                <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Direct Inbox Delivery Active</span>
               </div>
-              <p className="leading-relaxed text-slate-600 text-[11px]">
-                Form submissions are routed straight to your email (<span className="font-bold text-slate-800">{PERSONAL_INFO.email}</span>) with instant notifications when deployed!
+              <p className="leading-relaxed text-slate-300 text-[11px]">
+                Form submissions are routed straight to <span className="font-mono font-bold text-white">{PERSONAL_INFO.email}</span> with instant notifications!
               </p>
             </div>
 
           </div>
 
-          {/* Interactive Message Form Bento */}
+          {/* Interactive Message Form */}
           <div className="lg:col-span-7">
-            <div className="bento-card p-6 sm:p-8">
+            <div className="bg-[#0d1017] rounded-3xl p-7 sm:p-9 border border-white/10 shadow-2xl">
               {submitted ? (
-                <div className="py-10 text-center space-y-4 animate-in fade-in duration-300">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-md">
+                <div className="py-12 text-center space-y-5 animate-in fade-in duration-300">
+                  <div className="w-16 h-16 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 flex items-center justify-center mx-auto shadow-md">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="font-syne text-3xl font-bold text-white">
                     Message Delivered!
                   </h3>
-                  <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Thank you for reaching out, <span className="font-bold text-slate-800">{formData.name}</span>. Your message has been sent to <span className="font-bold text-blue-600">{PERSONAL_INFO.email}</span>.
+                  <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Thank you for reaching out, <span className="font-bold text-white">{formData.name}</span>. Your message has been sent to <span className="font-mono font-bold text-amber-400">{PERSONAL_INFO.email}</span>.
                   </p>
                   <button
                     onClick={() => {
                       setSubmitted(false);
                       setFormData({ name: '', email: '', subject: '', message: '' });
                     }}
-                    className="mt-4 px-6 py-3 rounded-full bg-slate-900 text-white font-bold text-xs uppercase tracking-wider font-mono hover:bg-blue-600 transition-colors shadow-sm cursor-pointer"
+                    className="mt-4 px-6 py-3.5 rounded-full bg-amber-400 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider hover:bg-amber-300 transition-colors shadow-lg cursor-pointer"
                   >
                     Send Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <MessageSquare className="w-5 h-5 text-blue-600" />
-                      <h3 className="text-xl font-bold text-slate-900">Send a Message</h3>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-2.5">
+                      <MessageSquare className="w-5 h-5 text-amber-400" />
+                      <h3 className="font-syne text-2xl font-bold text-white">Send a Message</h3>
                     </div>
-                    <span className="text-xs font-mono text-slate-400 font-bold">Direct Inbox</span>
+                    <span className="text-xs font-mono text-slate-400 font-bold uppercase">Direct Inbox</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono mb-1.5">
-                        Your Name <span className="text-rose-500">*</span>
+                      <label className="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-2">
+                        Your Name <span className="text-amber-400">*</span>
                       </label>
                       <input
                         type="text"
@@ -282,13 +290,13 @@ export const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Smith"
-                        className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-2xs"
+                        className="w-full px-4 py-3.5 rounded-2xl border border-white/10 bg-[#07090e] text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono mb-1.5">
-                        Your Email <span className="text-rose-500">*</span>
+                      <label className="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-2">
+                        Your Email <span className="text-amber-400">*</span>
                       </label>
                       <input
                         type="email"
@@ -297,13 +305,13 @@ export const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="alex@example.com"
-                        className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-2xs"
+                        className="w-full px-4 py-3.5 rounded-2xl border border-white/10 bg-[#07090e] text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono mb-1.5">
+                    <label className="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-2">
                       Subject / Topic
                     </label>
                     <input
@@ -312,33 +320,33 @@ export const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="Project Discussion / AI Engineering Opportunity"
-                      className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-2xs"
+                      className="w-full px-4 py-3.5 rounded-2xl border border-white/10 bg-[#07090e] text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider font-mono mb-1.5">
-                      Message <span className="text-rose-500">*</span>
+                    <label className="block text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-2">
+                      Message <span className="text-amber-400">*</span>
                     </label>
                     <textarea
                       name="message"
                       required
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Hi Nikhil, I would like to connect regarding..."
-                      className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none shadow-2xs"
+                      className="w-full px-4 py-3.5 rounded-2xl border border-white/10 bg-[#07090e] text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-6 rounded-full font-bold text-white bg-slate-900 hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
+                    className="w-full py-4 px-6 rounded-full font-mono font-bold text-xs uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all duration-300 shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
-                        <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+                        <span className="animate-spin h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full"></span>
                         <span>Delivering Message...</span>
                       </span>
                     ) : (

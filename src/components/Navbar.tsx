@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -23,113 +23,100 @@ export const Navbar = ({ activeSection }: NavbarProps) => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'What I Build', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'PROJECTS', href: '#projects' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'ABOUT', href: '#about' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 transition-all duration-300">
-      <div className="max-w-6xl mx-auto">
-        <div
-          className={`capsule-nav rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 flex items-center justify-between ${
-            isScrolled
-              ? 'shadow-lg border-slate-300/80 bg-white/95'
-              : 'shadow-xs border-slate-200/80 bg-white/90'
-          }`}
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 lg:px-16 pt-4 transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-6 rounded-full bg-[#07090e]/80 backdrop-blur-xl border border-white/10 shadow-2xl">
+        
+        {/* Brand Name Logo */}
+        <a
+          href="#home"
+          className="flex items-center gap-2.5 group focus:outline-none"
         >
-          {/* Left Text Branding with Availability Dot */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+          </span>
+          <span className="font-syne font-bold text-white text-sm sm:text-base tracking-widest uppercase group-hover:text-amber-400 transition-colors">
+            {PERSONAL_INFO.name.toUpperCase()}
+          </span>
+        </a>
+
+        {/* Desktop Editorial Navigation Links */}
+        <nav className="hidden lg:flex items-center space-x-8 font-mono text-xs tracking-widest text-slate-300">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`transition-all duration-200 uppercase relative py-1 ${
+                  isActive
+                    ? 'text-amber-400 font-bold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                {link.name}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-amber-400 rounded-full" />
+                )}
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Action Button */}
+        <div className="hidden lg:flex items-center">
           <a
-            href="#home"
-            className="flex items-center gap-2.5 group focus:outline-none"
+            href="#contact"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-mono tracking-wider uppercase font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all duration-300 shadow-lg shadow-amber-400/10 hover:-translate-y-0.5"
           >
-            <span className="flex h-2.5 w-2.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-slate-900 tracking-tight text-sm sm:text-base flex items-center gap-1 group-hover:text-blue-600 transition-colors">
-                {PERSONAL_INFO.shortName}
-                <Sparkles className="w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-wide hidden xs:block">
-                AI & ML • Full Stack Engineer
-              </span>
-            </div>
+            <span>Let's Talk</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
-
-          {/* Desktop Navigation Links Pill Group */}
-          <nav className="hidden lg:flex items-center space-x-1 bg-slate-100/80 p-1 rounded-full border border-slate-200/60">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                    isActive
-                      ? 'text-white bg-slate-900 shadow-sm font-bold'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Desktop Right CTA Button */}
-          <div className="hidden lg:flex items-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md shadow-blue-500/20 hover:-translate-y-0.5"
-            >
-              <span>Let's Connect</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          {/* Mobile Navigation Toggle Button */}
-          <div className="lg:hidden flex items-center gap-2">
-            <a
-              href="#contact"
-              className="px-3 py-1.5 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-xs"
-            >
-              Connect
-            </a>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full text-slate-700 bg-slate-100 hover:bg-slate-200 focus:outline-none transition-colors"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5 text-slate-900" />
-              ) : (
-                <Menu className="w-5 h-5 text-slate-900" />
-              )}
-            </button>
-          </div>
-
         </div>
+
+        {/* Mobile Toggle Button */}
+        <div className="lg:hidden flex items-center gap-2">
+          <a
+            href="#contact"
+            className="px-3 py-1.5 rounded-full text-xs font-mono font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors"
+          >
+            CONNECT
+          </a>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-full text-slate-300 hover:text-white bg-white/5 border border-white/10 focus:outline-none transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5 text-white" />
+            ) : (
+              <Menu className="w-5 h-5 text-white" />
+            )}
+          </button>
+        </div>
+
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-[65px] bg-slate-900/60 backdrop-blur-md z-40"
+          className="lg:hidden fixed inset-0 top-[75px] bg-[#07090e]/90 backdrop-blur-2xl z-40 px-4 pt-4"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="max-w-md mx-auto mt-2 mx-4 bg-white rounded-3xl border border-slate-200 p-6 space-y-3 shadow-2xl animate-in slide-in-from-top duration-300"
+            className="max-w-md mx-auto bg-[#0d1017] rounded-3xl border border-white/10 p-6 space-y-3 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="pb-2 border-b border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
-              <span>PORTFOLIO SECTIONS</span>
-              <span className="text-emerald-600 font-semibold">● Open for Opportunities</span>
+            <div className="pb-2 border-b border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>NAVIGATION SECTIONS</span>
+              <span className="text-amber-400 font-semibold">● Open for Work</span>
             </div>
 
             {navLinks.map((link) => (
@@ -137,27 +124,16 @@ export const Navbar = ({ activeSection }: NavbarProps) => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-all ${
+                className={`flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-mono tracking-wider transition-all ${
                   activeSection === link.href.substring(1)
-                    ? 'bg-blue-50 text-blue-600 font-bold border border-blue-200/60'
-                    : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                    ? 'bg-amber-400/10 text-amber-400 font-bold border border-amber-400/20'
+                    : 'text-slate-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 <span>{link.name}</span>
                 <ArrowUpRight className="w-4 h-4 opacity-60" />
               </a>
             ))}
-
-            <div className="pt-3 border-t border-slate-100">
-              <a
-                href="#projects"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-white bg-slate-900 hover:bg-blue-600 transition-all shadow-md"
-              >
-                <span>Explore Featured Work</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
       )}
