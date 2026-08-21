@@ -123,7 +123,7 @@ export const PROJECTS: Project[] = [
       "Production deployment architecture using Vercel (Frontend) and Render (Backend)"
     ],
     githubUrl: "https://github.com/7gnikhil/MaruthiTOOLS",
-    liveUrl: "https://maruthitools.vercel.app", // Placeholder demo link fallback
+    liveUrl: "https://maruthitools-1.onrender.com", // Placeholder demo link fallback
     gradient: "from-blue-600 to-indigo-700",
     iconName: "Factory"
   },
