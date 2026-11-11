@@ -1,33 +1,35 @@
 import { PROJECTS } from '../data/portfolioData';
+import { Reveal } from './Reveal';
+
+const PANELS = ['bg-[#1c1913] text-[#faf6ef]', 'bg-[#fffdf8] text-[#1c1913]', 'bg-[#c2410c] text-[#fff7ed]', 'bg-[#efe7d3] text-[#1c1913]'];
+const SUB = ['text-neutral-400', 'text-neutral-500', 'text-orange-100', 'text-neutral-500'];
 
 export const Projects = () => (
-  <section id="projects" className="pt-20 pb-4">
-    <div className="flex items-end justify-between mb-4">
-      <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight">Work</h2>
-      <span className="font-mono-d text-xs text-neutral-500">2025 — 2026</span>
-    </div>
-    <div className="border-t rule">
+  <section id="projects" className="pt-20">
+    <Reveal>
+      <div className="flex items-end justify-between mb-8">
+        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Selected <span className="font-serif-d italic font-normal accent">work</span></h2>
+        <span className="font-mono-d text-xs text-neutral-500">Scroll — the panels stack</span>
+      </div>
+    </Reveal>
+    <div className="pb-10">
       {PROJECTS.map((p, i) => (
-        <article key={p.id} className="hover-row border-b rule py-9 sm:py-11 px-2 sm:px-4 -mx-2 sm:-mx-4">
-          <div className="grid md:grid-cols-[70px_1fr] gap-4">
-            <span className="font-serif-d italic text-3xl gold">{String(i + 1).padStart(2, '0')}</span>
-            <div>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                <h3 className="text-2xl sm:text-[32px] font-semibold tracking-tight leading-tight">{p.title}</h3>
-                <span className="font-mono-d text-[11px] uppercase tracking-widest text-neutral-500">{p.category} · {p.year}</span>
-              </div>
-              <p className="mt-1 text-neutral-400">{p.subtitle}{p.statusText ? <span className="gold"> — {p.statusText}</span> : null}</p>
-              <p className="mt-4 text-[16px] leading-relaxed text-neutral-300 max-w-3xl">{p.shortDescription}</p>
-              <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[14.5px] text-neutral-400 max-w-4xl">
-                {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span className="gold">—</span><span>{h}</span></li>)}
-              </ul>
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-                <p className="font-mono-d text-[11px] uppercase tracking-wider text-neutral-500">{p.technologies.join('  ·  ')}</p>
-                <div className="flex gap-6 text-sm font-semibold">
-                  {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="gold hover:underline underline-offset-4">Live site ↗</a>}
-                  <a href={p.githubUrl} target="_blank" rel="noreferrer" className="hover:text-[#d4af37] transition-colors">GitHub ↗</a>
-                </div>
-              </div>
+        <article key={p.id} className={`stack-card ${PANELS[i % 4]} rounded-2xl px-6 py-9 sm:px-10 sm:py-12 mb-8 border border-black/10`}>
+          <div className="flex items-start justify-between gap-6">
+            <span className="font-serif-d italic text-5xl sm:text-6xl opacity-90">{String(i + 1).padStart(2, '0')}</span>
+            <span className="font-mono-d text-[11px] uppercase tracking-widest opacity-70 text-right">{p.category}<br />{p.year}</span>
+          </div>
+          <h3 className="mt-5 text-3xl sm:text-[40px] font-semibold tracking-tight leading-tight">{p.title}</h3>
+          <p className={`mt-1.5 text-[16px] ${SUB[i % 4]}`}>{p.subtitle}{p.statusText ? <> — <span className="font-medium">{p.statusText}</span></> : null}</p>
+          <p className="mt-5 text-[16.5px] leading-relaxed max-w-3xl opacity-92">{p.shortDescription}</p>
+          <ul className="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-[14.5px] max-w-4xl">
+            {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span>—</span><span className="opacity-85">{h}</span></li>)}
+          </ul>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-current/15 pt-5">
+            <p className="font-mono-d text-[11px] uppercase tracking-wider opacity-70">{p.technologies.join('  ·  ')}</p>
+            <div className="flex gap-6 text-sm font-semibold">
+              {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-70 transition-opacity">Live site ↗</a>}
+              <a href={p.githubUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-70 transition-opacity">GitHub ↗</a>
             </div>
           </div>
         </article>
