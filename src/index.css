@@ -57,3 +57,5 @@ body {
 @media (hover: none) { .poster:hover { transform: none; } .poster .poster-shade, .poster .poster-actions { opacity: 1; transform: none; } }
 
 .font-display { font-family: "Inter", system-ui, sans-serif; letter-spacing: -0.02em; }
+
+html, body { height: 100%; overscroll-behavior: none; }

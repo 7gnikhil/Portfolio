@@ -19,10 +19,10 @@ export const PERSONAL_INFO = {
   name: "Nikhil Chowdhary Ghanta",
   shortName: "Nikhil Ghanta",
   title: "AI / ML Engineer & Software Developer",
-  tagline: "Final-year B.Tech, AI & Machine Learning — Anurag University, Hyderabad.",
+  tagline: "Final-year B.Tech, AI & Machine Learning — Hyderabad.",
   bio: "I build software that people actually use. Right now that means OneUco, a student community platform I designed, built and launched on my own, and a multilingual fraud-message detector that ships as a browser extension. I work mostly in Python and TypeScript, and I care more about whether a thing works in the real world than how it looks in a demo.",
   location: "Hyderabad, India",
-  university: "Anurag University, Hyderabad",
+  university: "Hyderabad, India",
   degree: "Bachelor of Technology in Artificial Intelligence and Machine Learning",
   graduationYear: "2027",
   cgpa: "6.65 / 10",
@@ -128,6 +128,6 @@ export const EXPERIENCE = {
 };
 
 export const EDUCATION = [
-  { place: "Anurag University, Hyderabad", what: "Bachelor of Technology in Artificial Intelligence and Machine Learning", when: "Class of 2027 · CGPA 6.65" },
+  { place: "Hyderabad", what: "Bachelor of Technology in Artificial Intelligence and Machine Learning", when: "Class of 2027" },
   { place: "Codegnan, Hyderabad", what: "Python Full Stack Development Trainee", when: "Apr 2025 – Nov 2025" },
 ];

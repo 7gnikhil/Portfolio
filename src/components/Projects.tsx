@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS, type Project } from '../data/portfolioData';
 import { Reveal } from './Reveal';
-import { COVERS } from '../assets/covers';
+import { GALLERY } from '../assets/gallery';
 
 const ART = [
   'from-[#101d42] to-[#2563eb]',
@@ -13,6 +13,13 @@ const ART = [
 
 export const Projects = () => {
   const [sel, setSel] = useState<number | null>(null);
+  const [slide, setSlide] = useState(0);
+  useEffect(() => { setSlide(0); }, [sel]);
+  useEffect(() => {
+    if (sel === null) return;
+    const t = setInterval(() => setSlide(v => (v + 1) % 3), 2500);
+    return () => clearInterval(t);
+  }, [sel]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSel(null); };
     window.addEventListener('keydown', onKey);
@@ -20,7 +27,7 @@ export const Projects = () => {
   }, []);
   const p: Project | null = sel !== null ? PROJECTS[sel] : null;
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-5 sm:px-10 pt-16 pb-4">
+    <section id="projects" className="mx-auto max-w-7xl px-5 sm:px-10 pt-3 pb-2">
       <Reveal>
         <h2 className="font-display text-2xl sm:text-[28px] font-bold">Continue Exploring</h2>
         <p className="text-sm text-neutral-400 mt-1">Tap a poster — details open like a title page. No resume, promise.</p>
@@ -29,7 +36,7 @@ export const Projects = () => {
         <div className="mt-6 flex xl:grid xl:grid-cols-4 gap-4 overflow-x-auto xl:overflow-visible no-scrollbar snap-x snap-mandatory xl:snap-none -mx-5 px-5 sm:mx-0 sm:px-0 pb-2 xl:pb-0">
           {PROJECTS.map((proj, i) => (
             <motion.button key={proj.id} onClick={() => setSel(i)} whileHover={{ scale: 1.07, y: -6 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 320, damping: 22 }} className={`poster relative text-left aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end shrink-0 snap-start w-[80vw] min-[520px]:w-[320px] xl:w-auto`}>
-              <img src={COVERS[proj.id]} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <img src={GALLERY[proj.id][0]} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
               <span className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-black/10 pointer-events-none" />
               <span className="poster-shade absolute inset-0 pointer-events-none" />
               <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
@@ -55,8 +62,16 @@ export const Projects = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={() => setSel(null)} />
           <motion.div initial={{ opacity: 0, y: 46, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30, scale: 0.98 }} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-[#0b1128] border rule">
             <div className={`relative bg-gradient-to-br ${ART[sel! % 4]} px-7 pt-10 pb-8 overflow-hidden`}>
-              <img src={COVERS[p.id]} alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <AnimatePresence mode="popLayout">
+                <motion.img key={slide} src={GALLERY[p.id][slide]} alt="" initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.7, ease: 'easeOut' }} className="absolute inset-0 w-full h-full object-cover" />
+              </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15" />
+              <a href={p.liveUrl ?? p.githubUrl} target="_blank" rel="noreferrer" aria-label="Play" className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white/95 text-black flex items-center justify-center text-xl shadow-[0_10px_34px_rgba(0,0,0,.5)] hover:scale-110 transition-transform">▶</a>
+              <div className="absolute top-4 left-5 flex gap-1.5 z-10">
+                {GALLERY[p.id].map((_, di) => (
+                  <button key={di} onClick={() => setSlide(di)} aria-label={`Photo ${di + 1}`} className={`h-1.5 rounded-full transition-all duration-500 ${di === slide ? 'w-7 bg-white' : 'w-2.5 bg-white/45'}`} />
+                ))}
+              </div>
               <div className="relative">
               <button onClick={() => setSel(null)} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 text-white text-lg leading-none hover:bg-black/80 transition-colors">×</button>
               <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-white/75">N Originals · {p.year}</p>

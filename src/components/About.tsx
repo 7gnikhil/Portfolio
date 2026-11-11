@@ -14,7 +14,7 @@ export const About = () => (
         &ldquo;I learn by shipping — if it isn&rsquo;t live, it isn&rsquo;t finished.&rdquo;
       </p>
       <p className="mt-6 text-neutral-400 max-w-2xl leading-relaxed text-[16px]">
-        Final-year AI &amp; ML student at Anurag University, Hyderabad. Tech Lead Intern at VISWAM.AI on the side. The work above is the story — everything else is in the posters.
+        Final-year AI &amp; ML student from Hyderabad. Tech Lead Intern at VISWAM.AI on the side. The work above is the story — everything else is in the posters.
       </p>
     </Reveal>
     <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#1b2340] border rule rounded-2xl overflow-hidden">

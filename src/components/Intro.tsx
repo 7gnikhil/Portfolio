@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export const Intro = () => {
-  const [show, setShow] = useState(true);
+export const Intro = ({ show, onPlay }: { show: boolean; onPlay: () => void }) => {
   return (
     <AnimatePresence>
       {show && (
@@ -31,7 +29,7 @@ export const Intro = () => {
           <motion.button
             initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.45, duration: 0.5 }}
             whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.96 }}
-            onClick={() => setShow(false)}
+            onClick={onPlay}
             className="mt-12 inline-flex items-center gap-3 bg-white text-black font-semibold text-lg px-9 py-3.5 rounded-full shadow-[0_10px_36px_rgba(63,169,245,.35)]"
           >
             ▶ Play
