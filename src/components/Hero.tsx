@@ -13,7 +13,7 @@ export const Hero = () => {
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.25]);
   return (
     <section id="top" ref={ref} className="hero-glow relative overflow-hidden">
-      <motion.div style={{ opacity: textOpacity }} className="mx-auto max-w-7xl px-5 sm:px-10 pt-32 sm:pt-40 pb-14 grid lg:grid-cols-[1.35fr_1fr] gap-12 items-center">
+      <motion.div style={{ opacity: textOpacity }} className="mx-auto max-w-7xl px-5 sm:px-10 pt-28 sm:pt-40 pb-12 sm:pb-14 grid lg:grid-cols-[1.35fr_1fr] gap-10 lg:gap-12 items-center">
         <motion.div variants={parent} initial="hidden" animate="show">
           <motion.p variants={item} className="font-mono-d text-xs uppercase tracking-[.3em] text-neutral-300">
             <span className="accent font-bold">N</span> Series <span className="text-neutral-500 normal-case tracking-normal">— an original portfolio</span>
@@ -21,7 +21,7 @@ export const Hero = () => {
           <motion.h1 variants={item} className="font-display mt-5 font-extrabold uppercase leading-[.95] tracking-tight text-[17vw] sm:text-[96px] lg:text-[118px]">
             Nik<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1f80e0] to-[#7dd3fc]">h</span>il
           </motion.h1>
-          <motion.p variants={item} className="mt-2 font-mono-d text-sm sm:text-base uppercase tracking-[.55em] text-[#7dd3fc] font-semibold">An Original Series</motion.p>
+          <motion.p variants={item} className="mt-2 font-mono-d text-sm sm:text-base uppercase tracking-[.55em] text-[#7dd3fc] font-semibold">An AI Developer Series</motion.p>
           <motion.div variants={item} className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-neutral-300">
             <span className="border border-white/40 rounded px-1.5 py-0.5 font-semibold text-white">AI / ML</span>
             <span>B.Tech, Class of 2027</span><span className="text-neutral-600">•</span>
@@ -41,16 +41,16 @@ export const Hero = () => {
             <span className="w-2 h-2 rounded-full bg-emerald-400 pulse-dot inline-block" /> {PERSONAL_INFO.status}
           </motion.p>
         </motion.div>
-        <motion.div style={{ y: portraitY, scale: portraitScale }} initial={{ opacity: 0, y: 44 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[380px]">
+        <motion.div style={{ y: portraitY, scale: portraitScale }} initial={{ opacity: 0, y: 44 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px]">
           <div className="relative rounded-2xl overflow-hidden border border-white/12 bg-gradient-to-b from-[#131c3f] via-[#0a0f26] to-[#040714] aspect-[4/5] flex flex-col items-center justify-center">
             <span className="font-serif-d italic text-[120px] leading-none text-white/95">N</span>
             <span className="mt-1 font-mono-d text-[11px] uppercase tracking-[.35em] text-neutral-400">Ghanta</span>
             <span className="absolute bottom-5 font-mono-d text-[10px] uppercase tracking-widest text-neutral-500">Photo drops here — coming soon</span>
           </div>
-          <div className="float-y absolute -left-4 top-10 bg-white/10 backdrop-blur-md border border-white/15 rounded-lg px-3.5 py-2.5 text-xs">
+          <div className="float-y absolute left-2 sm:-left-4 top-8 sm:top-10 bg-white/10 backdrop-blur-md border border-white/15 rounded-lg px-3.5 py-2.5 text-xs">
             <p className="font-bold">OneUco</p><p className="text-neutral-400">Live — built solo</p>
           </div>
-          <div className="float-y absolute -right-3 bottom-16 bg-white/10 backdrop-blur-md border border-white/15 rounded-lg px-3.5 py-2.5 text-xs" style={{ animationDelay: '1.2s' }}>
+          <div className="float-y absolute right-2 sm:-right-3 bottom-14 sm:bottom-16 bg-white/10 backdrop-blur-md border border-white/15 rounded-lg px-3.5 py-2.5 text-xs" style={{ animationDelay: '1.2s' }}>
             <p className="font-bold">Hyderabad</p><p className="text-neutral-400">Anurag University</p>
           </div>
         </motion.div>
