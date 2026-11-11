@@ -18,10 +18,10 @@ export const Hero = () => {
           <motion.p variants={item} className="font-mono-d text-xs uppercase tracking-[.3em] text-neutral-300">
             <span className="accent font-bold">N</span> Series <span className="text-neutral-500 normal-case tracking-normal">— an original portfolio</span>
           </motion.p>
-          <motion.h1 variants={item} className="mt-5 font-bold uppercase leading-[.95] tracking-tight text-[17vw] sm:text-[96px] lg:text-[118px]">
-            Nik<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e50914] to-[#f5638f]">h</span>il
+          <motion.h1 variants={item} className="font-display mt-5 font-extrabold uppercase leading-[.95] tracking-tight text-[17vw] sm:text-[96px] lg:text-[118px]">
+            Nik<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1f80e0] to-[#7dd3fc]">h</span>il
           </motion.h1>
-          <motion.p variants={item} className="mt-2 font-mono-d text-sm sm:text-base uppercase tracking-[.55em] text-[#e50914] font-semibold">The Series</motion.p>
+          <motion.p variants={item} className="mt-2 font-mono-d text-sm sm:text-base uppercase tracking-[.55em] text-[#7dd3fc] font-semibold">An Original Series</motion.p>
           <motion.div variants={item} className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-neutral-300">
             <span className="border border-white/40 rounded px-1.5 py-0.5 font-semibold text-white">AI / ML</span>
             <span>B.Tech, Class of 2027</span><span className="text-neutral-600">•</span>

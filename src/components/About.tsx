@@ -21,7 +21,7 @@ export const About = () => (
       {STATS.map((s, i) => (
         <div key={s.label} className="bg-[#0b1128] p-6 sm:p-8">
           <Reveal delay={i * 70}>
-            <p className="text-4xl sm:text-5xl font-bold">{s.n}</p>
+            <p className="font-display text-4xl sm:text-5xl font-bold">{s.n}</p>
             <p className="mt-2 text-sm text-neutral-400 leading-snug">{s.label}</p>
           </Reveal>
         </div>

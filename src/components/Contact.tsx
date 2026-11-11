@@ -6,7 +6,7 @@ export const Contact = () => (
   <section id="contact" className="mx-auto max-w-7xl px-5 sm:px-10 pt-24 pb-20 text-center">
     <Reveal>
       <p className="font-mono-d text-xs uppercase tracking-[.3em] text-neutral-400">Final episode — for now</p>
-      <h2 className="mt-5 text-4xl sm:text-6xl font-bold tracking-tight">Your team could be <span className="font-serif-d italic font-normal accent">next</span></h2>
+      <h2 className="font-display mt-5 text-4xl sm:text-6xl font-bold tracking-tight">Your team could be <span className="font-serif-d italic font-normal accent">next</span></h2>
       <p className="mt-5 text-neutral-300 max-w-xl mx-auto leading-relaxed">{PERSONAL_INFO.status}. Email is fastest — I reply.</p>
       <div className="mt-9 flex flex-wrap justify-center gap-4">
         <a href={`mailto:${PERSONAL_INFO.email}`} className="bg-white text-black font-semibold px-7 py-3.5 rounded-md hover:bg-neutral-200 transition-colors">▶ {PERSONAL_INFO.email}</a>

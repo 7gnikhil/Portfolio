@@ -21,7 +21,7 @@ export const Projects = () => {
   return (
     <section id="projects" className="mx-auto max-w-7xl px-5 sm:px-10 pt-16 pb-4">
       <Reveal>
-        <h2 className="text-2xl sm:text-[28px] font-semibold">Continue Exploring</h2>
+        <h2 className="font-display text-2xl sm:text-[28px] font-bold">Continue Exploring</h2>
         <p className="text-sm text-neutral-400 mt-1">Tap a poster — details open like a title page. No resume, promise.</p>
       </Reveal>
       <Reveal delay={100}>
@@ -32,7 +32,7 @@ export const Projects = () => {
               <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
               <span className="absolute top-3.5 right-5 font-serif-d italic text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
               <span className="poster-title relative">
-                <h3 className="text-xl font-bold leading-tight drop-shadow">{proj.title}</h3>
+                <h3 className="font-display text-xl font-bold leading-tight drop-shadow">{proj.title}</h3>
                 <p className="text-[13px] text-white/85 mt-1">{proj.subtitle}</p>
                 <p className="font-mono-d text-[10px] uppercase tracking-widest text-white/70 mt-2.5">{proj.statusText ?? proj.category}</p>
               </span>
@@ -54,7 +54,7 @@ export const Projects = () => {
             <div className={`relative bg-gradient-to-br ${ART[sel! % 4]} px-7 pt-10 pb-8`}>
               <button onClick={() => setSel(null)} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 text-white text-lg leading-none hover:bg-black/80 transition-colors">×</button>
               <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-white/75">N Originals · {p.year}</p>
-              <h3 className="mt-2.5 text-3xl sm:text-4xl font-bold leading-tight">{p.title}</h3>
+              <h3 className="font-display mt-2.5 text-3xl sm:text-4xl font-bold leading-tight">{p.title}</h3>
               <p className="mt-1.5 text-white/85">{p.subtitle}{p.statusText ? ` — ${p.statusText}` : ''}</p>
               <div className="mt-6 flex flex-wrap gap-3.5">
                 {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="bg-white text-black font-semibold px-5 py-2.5 rounded-md hover:bg-neutral-200 transition-colors">▶ Live Site</a>}

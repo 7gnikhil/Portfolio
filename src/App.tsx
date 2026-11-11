@@ -1,4 +1,5 @@
 import { Navbar } from './components/Navbar';
+import { Intro } from './components/Intro';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
@@ -9,6 +10,7 @@ import { Footer } from './components/Footer';
 export function App() {
   return (
     <div className="min-h-screen">
+      <Intro />
       <Navbar />
       <main className="mx-auto max-w-6xl px-5 sm:px-10">
         <Hero />

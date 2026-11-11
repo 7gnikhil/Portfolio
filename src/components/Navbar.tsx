@@ -11,8 +11,8 @@ export const Navbar = () => {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-black/85 to-transparent">
       <div className="mx-auto max-w-7xl px-5 sm:px-10 h-[72px] flex items-center justify-between">
-        <a href="#top" className="text-xl font-bold tracking-tight">Nikhil<span className="accent">+</span></a>
-        <nav className="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wide text-neutral-300">
+        <a href="#top" className="font-display text-xl font-extrabold tracking-tight">Nikhil<span className="accent">+</span></a>
+        <nav className="hidden lg:flex items-center gap-8 font-mono-d text-xs font-medium tracking-widest text-neutral-300">
           {LINKS.map(l => <a key={l.name} href={l.href} className="hover:text-white transition-colors uppercase">{l.name}</a>)}
         </nav>
         <div className="hidden lg:flex items-center gap-4">

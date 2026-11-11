@@ -4,7 +4,7 @@ html { scroll-behavior: smooth; }
 body {
   background: #040714;
   color: #f9f9f9;
-  font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -55,3 +55,5 @@ body {
 .poster .poster-title { transition: transform .3s cubic-bezier(.22,1,.36,1); }
 .poster:hover .poster-title { transform: translateY(-2px); }
 @media (hover: none) { .poster:hover { transform: none; } .poster .poster-shade, .poster .poster-actions { opacity: 1; transform: none; } }
+
+.font-display { font-family: "Syne", "Plus Jakarta Sans", sans-serif; }
