@@ -2,254 +2,132 @@ export interface Project {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Full-Stack' | 'AI/ML' | 'Web Audio & AI';
-  isFeatured: boolean;
-  isProduction: boolean;
+  category: string;
+  year: string;
   statusText?: string;
   technologies: string[];
   shortDescription: string;
-  fullDescription: string;
   highlights: string[];
   githubUrl: string;
   liveUrl?: string;
-  gradient: string;
-  iconName: string;
 }
 
-export interface SkillCategory {
-  category: string;
-  icon: string;
-  description: string;
-  skills: string[];
-}
-
-export interface Certification {
-  id: string;
-  issuer: string;
-  title: string;
-  badge?: string;
-  year: string;
-  details: string;
-  topics: string[];
-  icon: string;
-}
-
-export interface ServiceItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  techStack: string[];
-}
+export interface SkillCategory { category: string; skills: string[]; }
+export interface Certification { id: string; issuer: string; title: string; year: string; }
 
 export const PERSONAL_INFO = {
   name: "Nikhil Chowdhary Ghanta",
-  shortName: "Nikhil Chowdhary",
-  title: "AI & ML Engineer | Full-Stack Developer",
-  tagline: "Building Practical Technology Solutions",
-  bio: "I’m Nikhil Chowdhary Ghanta, a final-year B.Tech student specializing in AI and Machine Learning at Anurag University, Hyderabad. I’m passionate about software development, artificial intelligence, machine learning, and building practical technology solutions. I enjoy working on projects that combine AI with real-world applications and continuously improving my programming and problem-solving skills. I’m currently looking to begin my career as a software/AI engineer and contribute to innovative projects.",
-  location: "Hyderabad, Telangana, India",
+  shortName: "Nikhil Ghanta",
+  title: "AI / ML Engineer & Software Developer",
+  tagline: "Final-year B.Tech, AI & Machine Learning — Anurag University, Hyderabad.",
+  bio: "I build software that people actually use. Right now that means OneUco, a student community platform I designed, built and launched on my own, and a multilingual fraud-message detector that ships as a browser extension. I work mostly in Python and TypeScript, and I care more about whether a thing works in the real world than how it looks in a demo.",
+  location: "Hyderabad, India",
   university: "Anurag University, Hyderabad",
-  degree: "B.Tech — Artificial Intelligence & Machine Learning",
+  degree: "Bachelor of Technology in Artificial Intelligence and Machine Learning",
   graduationYear: "2027",
   cgpa: "6.65 / 10",
   email: "7gnikhil@gmail.com",
   phone: "+91 99667 09535",
-  linkedin: "https://linkedin.com/in/nikhil-chowdhary-ghanta",
-  linkedinDisplay: "linkedin.com/in/nikhil-chowdhary-ghanta",
+  linkedin: "https://www.linkedin.com/in/nikhil7g",
+  linkedinDisplay: "linkedin.com/in/nikhil7g",
   github: "https://github.com/7gnikhil",
   githubDisplay: "github.com/7gnikhil",
-  status: "Available for 2027 Full-Time Roles & Engineering Opportunities",
+  status: "Open to fresher roles — software, AI/ML, Python/backend — for 2027",
 };
-
-export const SKILL_CATEGORIES: SkillCategory[] = [
-  {
-    category: "Programming Languages",
-    icon: "Code2",
-    description: "Core languages for algorithm design, data analysis, and software development.",
-    skills: ["Python", "SQL", "TypeScript", "JavaScript"]
-  },
-  {
-    category: "AI & Machine Learning",
-    icon: "BrainCircuit",
-    description: "Modern machine learning, deep learning architectures, and generative AI systems.",
-    skills: ["Machine Learning", "Deep Learning", "NLP", "LLMs", "RAG (Retrieval-Augmented Gen)"]
-  },
-  {
-    category: "Software Engineering",
-    icon: "Cpu",
-    description: "Foundational software design principles, structures, and service integrations.",
-    skills: ["Object-Oriented Programming (OOP)", "Data Structures & Algorithms", "REST APIs", "Backend Development", "API Integration"]
-  },
-  {
-    category: "Frameworks & Libraries",
-    icon: "Layers",
-    description: "Modern frameworks for front-end UIs, backend servers, and machine learning pipelines.",
-    skills: ["React", "Node.js", "Express.js", "Flask", "Scikit-learn", "Pandas", "NumPy"]
-  },
-  {
-    category: "Databases & Storage",
-    icon: "Database",
-    description: "Relational, document-oriented, and vector storage solutions for structured & semantic data.",
-    skills: ["MySQL", "MongoDB", "MongoDB Atlas", "Vector Databases / FAISS"]
-  },
-  {
-    category: "Tools & Platforms",
-    icon: "Wrench",
-    description: "Developer workflows, cloud hosting platforms, and version control ecosystem.",
-    skills: ["Git", "GitHub", "Hugging Face", "Streamlit", "Vercel", "Render"]
-  }
-];
 
 export const PROJECTS: Project[] = [
   {
-    id: "maruthi-toolings",
-    title: "Maruthi Toolings — Precision Injection Moulds",
-    subtitle: "Full-Stack Industrial Web Platform",
-    category: "Full-Stack",
-    isFeatured: true,
-    isProduction: true,
-    statusText: "Real-World Production Platform",
-    technologies: ["React 19", "TypeScript", "Express.js", "MongoDB", "Vite", "MongoDB Atlas", "Vercel", "Render"],
-    shortDescription: "A full-stack industrial web platform created for a precision plastic injection mould manufacturer, featuring product discovery, enquiry workflows, and an AI-assisted customer support chatbot.",
-    fullDescription: "Maruthi Toolings is a production-deployed full-stack web application designed specifically for an actual industrial plastic injection mould manufacturing enterprise. It bridges customer inquiry management, interactive product showcases, and intelligent customer support into a unified, responsive web platform.",
+    id: "oneuco",
+    title: "OneUco",
+    subtitle: "One University Community",
+    category: "Product — live",
+    year: "2026",
+    statusText: "Live, in production",
+    technologies: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel", "PWA / Web Push"],
+    shortDescription: "A social platform for students across colleges — not just one campus. Students sign up, claim a username, and connect through a rotary-dial home screen that is the app's navigation. Swipe-to-match, private groups and servers, a campus feed, and direct messages with read receipts and push notifications.",
     highlights: [
-      "Product and service discovery with responsive showcase and custom 3D tool visualizations",
-      "Streamlined enquiry workflows and recruitment application functionality",
-      "AI-assisted customer support chatbot with interactive conversational responses",
-      "Dynamic image slideshows and interactive lightbox galleries for mould components",
-      "Robust REST APIs built with Express.js with strict data validation and sanitization",
-      "MongoDB Atlas cloud database integration with secure environment-based credentials",
-      "Production deployment architecture using Vercel (Frontend) and Render (Backend)"
+      "Designed, built and launched solo; live and open to all colleges",
+      "Rotary dial as the main navigation — no other student app uses one",
+      "Fling (swipe & match), Tea (servers/groups), Homies (friends), Chirp (feed)",
+      "Web Push notifications and an installable PWA",
+      "Privacy built in: full profiles unlock only for accepted friends",
     ],
-    githubUrl: "https://github.com/7gnikhil/MaruthiTOOLS",
-    liveUrl: "https://maruthitools-1.onrender.com", // Placeholder demo link fallback
-    gradient: "from-blue-600 to-indigo-700",
-    iconName: "Factory"
-  },
-  {
-    id: "musicmitra",
-    title: "MusicMitra — AI-Powered Telugu Karaoke Platform",
-    subtitle: "AI Audio & Web Audio Interactive Platform",
-    category: "Web Audio & AI",
-    isFeatured: false,
-    isProduction: false,
-    statusText: "AI Audio Web Application",
-    technologies: ["Gemini API", "TypeScript", "Demucs", "Web Audio API", "MediaRecorder API"],
-    shortDescription: "Real-time Telugu karaoke platform leveraging Gemini AI for lyrics synchronization & translation, coupled with Demucs for AI vocal/instrumental audio separation.",
-    fullDescription: "MusicMitra is an innovative AI-powered web platform tailored for Telugu music enthusiasts. It performs vocal separation, synchronizes song lyrics, provides English translations and transliterations via LLMs, and lets users record their singing directly in the browser with real-time pitch feedback.",
-    highlights: [
-      "Real-time Telugu karaoke experience with synchronized lyrics display",
-      "AI-powered Telugu transliteration and English lyric translation powered by Gemini API",
-      "Vocal and instrumental track isolation using state-of-the-art Demucs AI models",
-      "Browser-based high-quality recording utilizing MediaRecorder API and Web Audio API",
-      "Real-time pitch detection and synchronized playback for performance scoring"
-    ],
-    githubUrl: "https://github.com/7gnikhil/MusicMitra",
-    gradient: "from-purple-600 to-pink-600",
-    iconName: "Music"
+    githubUrl: "https://github.com/7gnikhil/OneUniversityCommunity",
+    liveUrl: "https://one-university-community.vercel.app",
   },
   {
     id: "fraud-detection",
-    title: "Multilingual & Cross-Market Financial Fraud Detection",
-    subtitle: "AI/ML Financial R&D Model Pipeline",
-    category: "AI/ML",
-    isFeatured: false,
-    isProduction: false,
-    statusText: "AI/ML Research Project (In R&D)",
-    technologies: ["Python", "Scikit-learn", "Deep Learning", "Pandas", "NumPy", "ANN", "LSTM", "Autoencoders"],
-    shortDescription: "Advanced financial fraud detection framework applying deep learning (ANN, LSTM, Autoencoders) and class-imbalance handling to identify anomaly patterns across cross-market transactions.",
-    fullDescription: "This research and development project focuses on identifying fraudulent financial transactions across diverse cross-market datasets. It implements transaction-level data preprocessing, synthetic oversampling techniques for class imbalance, and evaluates deep neural network models.",
+    title: "Multilingual Fraud Message Detection",
+    subtitle: "Scam SMS & message classifier — English, Hindi, Telugu",
+    category: "AI / ML",
+    year: "2026",
+    statusText: "Extension v1.3 released",
+    technologies: ["Python", "MuRIL", "PyTorch", "scikit-learn", "FastAPI", "Chrome Extension", "ONNX Runtime Web"],
+    shortDescription: "A classifier that flags fraudulent messages in three languages, built on 5,559 real messages (7,624-row dataset). It uses frozen MuRIL embeddings with per-language heads, and runs on-device in a Chrome extension — no message ever leaves the browser.",
     highlights: [
-      "Rigorous transaction data preprocessing, feature engineering, and dimensionality reduction",
-      "Handling extreme class imbalance common in financial fraud datasets",
-      "Deep learning model exploration: Artificial Neural Networks (ANN), Long Short-Term Memory (LSTM), and Autoencoders",
-      "Comprehensive metric evaluation including Accuracy, Precision, Recall, F1-Score, and ROC-AUC curves",
-      "API & UI design for real-time transaction-level fraud risk score prediction"
+      "F1 scores: English 0.952, Hindi 0.992, Telugu 0.912",
+      "Chrome extension (Manifest V3) with on-device inference via ONNX Runtime Web",
+      "FastAPI feedback backend collects user corrections for retraining",
+      "GitHub Actions CI/CD with scheduled retraining and automated extension releases",
+      "Released as v1.3.0 on GitHub; Microsoft Edge listing submitted and in review",
     ],
-    githubUrl: "https://github.com/7gnikhil",
-    gradient: "from-cyan-600 to-blue-700",
-    iconName: "ShieldAlert"
-  }
+    githubUrl: "https://github.com/7gnikhil/MultilingualFrauddetection",
+  },
+  {
+    id: "maruthi-toolings",
+    title: "Maruthi Toolings",
+    subtitle: "Website for a precision injection-mould manufacturer",
+    category: "Full-stack — client work",
+    year: "2025",
+    statusText: "Production site for a real business",
+    technologies: ["React", "TypeScript", "Express.js", "MongoDB", "REST API", "Vercel", "Render"],
+    shortDescription: "A full-stack platform for a working mould manufacturer: product and service showcase, enquiry workflows, job applications, and an AI-assisted support chatbot. Real client, real enquiries, still running.",
+    highlights: [
+      "Product discovery, enquiry and recruitment workflows",
+      "AI-assisted customer support chatbot",
+      "REST APIs in Express.js with validation and sanitisation",
+      "MongoDB Atlas, deployed on Vercel (frontend) and Render (backend)",
+    ],
+    githubUrl: "https://github.com/7gnikhil/MaruthiTOOLS",
+    liveUrl: "https://maruthitools-1.onrender.com",
+  },
+  {
+    id: "musicmitra",
+    title: "MusicMitra",
+    subtitle: "Telugu karaoke, in the browser",
+    category: "Web audio & AI",
+    year: "2025",
+    technologies: ["TypeScript", "Gemini API", "Demucs", "Web Audio API", "MediaRecorder API"],
+    shortDescription: "Karaoke for Telugu songs: Demucs separates vocals from the track, Gemini syncs, transliterates and translates the lyrics, and you record yourself in the browser with live pitch feedback.",
+    highlights: [
+      "Vocal / instrumental separation with Demucs",
+      "Lyric sync, Telugu transliteration and English translation via Gemini",
+      "In-browser recording with real-time pitch detection",
+    ],
+    githubUrl: "https://github.com/7gnikhil/MusicMitra",
+  },
+];
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  { category: "Languages", skills: ["Python", "SQL", "C", "TypeScript", "JavaScript", "Java (basic)"] },
+  { category: "AI & ML", skills: ["Machine Learning", "NLP", "Generative AI", "RAG", "Transfer Learning", "Computer Vision", "Feature Engineering", "Model Evaluation", "Classification"] },
+  { category: "Libraries & frameworks", skills: ["scikit-learn", "PyTorch", "Hugging Face", "Pandas", "NumPy", "FastAPI", "Flask", "React", "Next.js", "Node.js", "Express.js"] },
+  { category: "Data & tools", skills: ["MongoDB", "MySQL", "FAISS / Vector Databases", "Supabase", "Git", "GitHub", "GitLab", "Linux", "REST APIs", "Chrome Extension APIs"] },
 ];
 
 export const CERTIFICATIONS: Certification[] = [
-  {
-    id: "wipro-nasscom",
-    issuer: "Wipro — NASSCOM",
-    title: "Certificate Program in Artificial Intelligence & Machine Learning",
-    badge: "Gold Grade • 2026",
-    year: "2026",
-    details: "Comprehensive certification covering core machine learning algorithms, deep neural networks, computer vision, and industrial AI application workflows.",
-    topics: ["Supervised & Unsupervised Learning", "Neural Networks", "Deep Learning", "AI Application Deployment"],
-    icon: "Award"
-  },
-  {
-    id: "cisco-academy",
-    issuer: "Cisco Networking Academy",
-    title: "CCNA Modules, Python Essentials 1 & 2, Cybersecurity & Data Science",
-    badge: "Certified",
-    year: "2024 - 2025",
-    details: "Professional learning paths in networking fundamentals, advanced Python programming, cybersecurity principles, and data science foundational methods.",
-    topics: ["CCNA Network Protocols", "Python Essentials 1 & 2", "Cybersecurity Fundamentals", "Introduction to Data Science"],
-    icon: "ShieldCheck"
-  },
-  {
-    id: "nptel-python",
-    issuer: "NPTEL (IIT Certification)",
-    title: "Python for Data Science",
-    badge: "Certified",
-    year: "2024",
-    details: "Rigorous academic certification on using Python libraries (NumPy, Pandas, Matplotlib, Scikit-learn) for scientific computing and data analysis.",
-    topics: ["Data Manipulation", "Statistical Computing", "Exploratory Data Analysis", "Model Building"],
-    icon: "BookOpen"
-  }
+  { id: "wipro", issuer: "Wipro — NASSCOM", title: "Certificate Program in Artificial Intelligence & Machine Learning — Gold", year: "2026" },
+  { id: "aws", issuer: "AWS Academy", title: "Cloud Foundations", year: "" },
+  { id: "nptel", issuer: "NPTEL", title: "Python for Data Science", year: "" },
+  { id: "cisco", issuer: "Cisco Networking Academy", title: "CCNA Modules · Python Essentials 1 & 2 · Introduction to Cybersecurity · Introduction to Data Science", year: "" },
 ];
 
-export const SERVICES: ServiceItem[] = [
-  {
-    id: "fullstack",
-    title: "Full-Stack Web Development",
-    description: "Responsive, high-performance web applications built using React, TypeScript, Node.js, Express.js, databases, and clean RESTful API architectures.",
-    icon: "Layout",
-    techStack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "SQL"]
-  },
-  {
-    id: "aiml",
-    title: "AI & Machine Learning Engineering",
-    description: "Practical machine learning and deep learning pipelines for classification, prediction, NLP, and anomaly detection in real-world scenarios.",
-    icon: "Brain",
-    techStack: ["Python", "Scikit-learn", "TensorFlow", "Pandas", "NumPy"]
-  },
-  {
-    id: "ai-apps",
-    title: "AI-Powered Applications & RAG",
-    description: "Integrating Large Language Models (LLMs), RAG pipelines, vector search, and conversational AI chatbots into web interfaces.",
-    icon: "Sparkles",
-    techStack: ["Gemini API", "LLMs", "RAG", "Vector DBs / FAISS", "Hugging Face"]
-  },
-  {
-    id: "backend",
-    title: "Backend & API Development",
-    description: "Robust REST APIs, server routing, database schema modeling, authentication integration, payload validation, and cloud deployment pipelines.",
-    icon: "Server",
-    techStack: ["Express.js", "REST APIs", "MongoDB Atlas", "MySQL", "Render", "Vercel"]
-  },
-  {
-    id: "ai-solutions",
-    title: "AI + Real-World Business Solutions",
-    description: "Designing end-to-end applications that bridge advanced AI algorithms with practical business workflows, automated tools, and customer portals.",
-    icon: "Rocket",
-    techStack: ["Full-Stack Integration", "Data Pipelines", "AI Workflows", "UX/UI"]
-  }
-];
-
-export const LEADERSHIP_INFO = {
-  role: "Tech Lead Intern",
-  scope: "Managed a Team of 20+ Members Across Multiple Colleges",
-  highlights: [
-    "Coordinated technical workstreams and distributed key project deliverables among engineering team members.",
-    "Provided technical mentorship and peer support to resolve complex software bugs and architecture questions.",
-    "Supported end-to-end project execution, code review practices, and successful milestone deliveries."
-  ]
+export const EXPERIENCE = {
+  role: "Tech Lead Intern — VISWAM.AI",
+  detail: "Led a team of 20+ students across multiple colleges: split the work, reviewed code, unblocked people, and shipped to milestones.",
 };
+
+export const EDUCATION = [
+  { place: "Anurag University, Hyderabad", what: "Bachelor of Technology in Artificial Intelligence and Machine Learning", when: "Class of 2027 · CGPA 6.65" },
+  { place: "Codegnan, Hyderabad", what: "Python Full Stack Development Trainee", when: "Apr 2025 – Nov 2025" },
+];
