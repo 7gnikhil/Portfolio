@@ -4,13 +4,13 @@ import { openPanel } from '../lib/ui';
 
 const LINKS = [
   { name: 'Home', panel: 'home' as const },
-  { name: 'Originals', panel: 'home' as const },
+  { name: 'Originals', panel: 'originals' as const },
   { name: 'About', panel: 'about' as const },
   { name: 'Contact', panel: 'contact' as const },
 ];
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const go = (panel: 'home' | 'about' | 'contact') => { openPanel(panel); setOpen(false); };
+  const go = (panel: 'home' | 'originals' | 'about' | 'contact') => { openPanel(panel); setOpen(false); };
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-black/85 to-transparent">
       <div className="mx-auto max-w-7xl px-5 sm:px-10 h-[72px] flex items-center justify-between">

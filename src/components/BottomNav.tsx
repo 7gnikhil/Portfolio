@@ -4,7 +4,7 @@ import { openPanel } from '../lib/ui';
 
 const ITEMS = [
   { label: 'Home', panel: 'home' as const, Icon: Home },
-  { label: 'Originals', panel: 'home' as const, Icon: LayoutGrid },
+  { label: 'Originals', panel: 'originals' as const, Icon: LayoutGrid },
   { label: 'About', panel: 'about' as const, Icon: User },
   { label: 'Contact', panel: 'contact' as const, Icon: Mail },
 ];

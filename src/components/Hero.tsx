@@ -29,6 +29,7 @@ export const Hero = () => (
         <motion.div variants={item} className="mt-4 flex flex-wrap items-center gap-3">
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} onClick={openSeries} className="inline-flex items-center justify-center gap-2.5 bg-white text-black font-semibold px-5 py-2.5 rounded-md text-sm sm:text-base">▶ Play Intro</motion.button>
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} onClick={() => openPanel('about')} className="inline-flex items-center gap-2.5 bg-white/15 backdrop-blur font-semibold px-5 py-2.5 rounded-md text-sm sm:text-base">↓ About</motion.button>
+          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} onClick={() => openPanel('originals')} className="inline-flex items-center gap-2.5 bg-[#1f80e0] font-semibold px-5 py-2.5 rounded-md text-sm sm:text-base">🏢 The Apartment — Originals</motion.button>
           <motion.p variants={item} className="hidden lg:flex font-mono-d text-[11px] text-neutral-400 items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 pulse-dot inline-block" /> {PERSONAL_INFO.status}
           </motion.p>
