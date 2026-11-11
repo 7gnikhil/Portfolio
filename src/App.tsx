@@ -10,7 +10,7 @@ export function App() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="mx-auto max-w-3xl px-5 sm:px-8">
+      <main className="mx-auto max-w-6xl px-5 sm:px-10">
         <Hero />
         <Projects />
         <Skills />

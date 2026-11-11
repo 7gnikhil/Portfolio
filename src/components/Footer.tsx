@@ -1,10 +1,10 @@
 import { PERSONAL_INFO } from '../data/portfolioData';
 export const Footer = () => (
   <footer className="border-t rule">
-    <div className="mx-auto max-w-3xl px-5 sm:px-8 py-8 flex flex-wrap justify-between gap-3 text-sm text-neutral-500">
+    <div className="mx-auto max-w-6xl px-5 sm:px-10 py-7 flex flex-wrap justify-between gap-3 font-mono-d text-[11px] uppercase tracking-widest text-neutral-500">
       <span>© 2026 {PERSONAL_INFO.name}</span>
       <span>{PERSONAL_INFO.location}</span>
-      <a href="#top" className="hover:text-black">Back to top ↑</a>
+      <a href="#top" className="hover:text-[#d4af37]">Top ↑</a>
     </div>
   </footer>
 );

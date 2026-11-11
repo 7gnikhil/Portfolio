@@ -1,13 +1,16 @@
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 export const Skills = () => (
-  <section id="skills" className="py-14 border-t rule">
-    <h2 className="font-serif-d text-3xl mb-6">Skills</h2>
-    <div>
-      {SKILL_CATEGORIES.map(c => (
-        <div key={c.category} className="grid sm:grid-cols-[180px_1fr] gap-1 sm:gap-6 py-4 border-b rule last:border-b-0">
-          <h3 className="font-mono-d text-xs uppercase pt-1 text-neutral-500">{c.category}</h3>
-          <p className="text-[15.5px] leading-relaxed">{c.skills.join(', ')}</p>
+  <section id="skills" className="pt-20 pb-4">
+    <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight mb-8">Skills</h2>
+    <div className="grid md:grid-cols-2 gap-px bg-[#262219] border rule">
+      {SKILL_CATEGORIES.map((c, i) => (
+        <div key={c.category} className="bg-[#0c0b09] p-6 sm:p-8">
+          <div className="flex items-baseline justify-between">
+            <h3 className="font-mono-d text-xs uppercase tracking-widest gold">{c.category}</h3>
+            <span className="font-mono-d text-[11px] text-neutral-600">0{i + 1}</span>
+          </div>
+          <p className="mt-4 text-[16px] leading-relaxed text-neutral-200">{c.skills.join(', ')}</p>
         </div>
       ))}
     </div>

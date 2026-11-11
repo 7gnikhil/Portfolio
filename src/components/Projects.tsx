@@ -1,30 +1,32 @@
 import { PROJECTS } from '../data/portfolioData';
 
 export const Projects = () => (
-  <section id="projects" className="py-14 border-t rule">
-    <div className="flex items-baseline justify-between mb-2">
-      <h2 className="font-serif-d text-3xl">Work</h2>
-      <span className="font-mono-d text-xs text-neutral-500">{PROJECTS.length} projects</span>
+  <section id="projects" className="pt-20 pb-4">
+    <div className="flex items-end justify-between mb-4">
+      <h2 className="text-4xl sm:text-5xl font-bold uppercase tracking-tight">Work</h2>
+      <span className="font-mono-d text-xs text-neutral-500">2025 — 2026</span>
     </div>
-    <div>
+    <div className="border-t rule">
       {PROJECTS.map((p, i) => (
-        <article key={p.id} className="py-8 border-b rule last:border-b-0">
-          <div className="flex items-baseline gap-4">
-            <span className="font-mono-d text-xs text-neutral-400">{String(i + 1).padStart(2, '0')}</span>
-            <div className="flex-1">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="text-xl font-semibold tracking-tight">{p.title}</h3>
-                <span className="text-sm text-neutral-500">{p.subtitle}</span>
+        <article key={p.id} className="hover-row border-b rule py-9 sm:py-11 px-2 sm:px-4 -mx-2 sm:-mx-4">
+          <div className="grid md:grid-cols-[70px_1fr] gap-4">
+            <span className="font-serif-d italic text-3xl gold">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <h3 className="text-2xl sm:text-[32px] font-semibold tracking-tight leading-tight">{p.title}</h3>
+                <span className="font-mono-d text-[11px] uppercase tracking-widest text-neutral-500">{p.category} · {p.year}</span>
               </div>
-              <p className="font-mono-d text-[11px] uppercase text-neutral-500 mt-1.5">{p.category} · {p.year}{p.statusText ? ` · ${p.statusText}` : ''}</p>
-              <p className="mt-3 text-[15.5px] leading-relaxed text-neutral-800">{p.shortDescription}</p>
-              <ul className="mt-3 space-y-1.5 text-[15px] text-neutral-700">
-                {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span className="text-neutral-400">—</span><span>{h}</span></li>)}
+              <p className="mt-1 text-neutral-400">{p.subtitle}{p.statusText ? <span className="gold"> — {p.statusText}</span> : null}</p>
+              <p className="mt-4 text-[16px] leading-relaxed text-neutral-300 max-w-3xl">{p.shortDescription}</p>
+              <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[14.5px] text-neutral-400 max-w-4xl">
+                {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span className="gold">—</span><span>{h}</span></li>)}
               </ul>
-              <p className="mt-4 text-sm text-neutral-500">{p.technologies.join(' · ')}</p>
-              <div className="mt-4 flex gap-5 text-sm font-medium">
-                {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="link-u">Live site ↗</a>}
-                <a href={p.githubUrl} target="_blank" rel="noreferrer" className="link-u">GitHub ↗</a>
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+                <p className="font-mono-d text-[11px] uppercase tracking-wider text-neutral-500">{p.technologies.join('  ·  ')}</p>
+                <div className="flex gap-6 text-sm font-semibold">
+                  {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="gold hover:underline underline-offset-4">Live site ↗</a>}
+                  <a href={p.githubUrl} target="_blank" rel="noreferrer" className="hover:text-[#d4af37] transition-colors">GitHub ↗</a>
+                </div>
               </div>
             </div>
           </div>
