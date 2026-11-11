@@ -1,38 +1,55 @@
 import { PROJECTS } from '../data/portfolioData';
 import { Reveal } from './Reveal';
 
-const PANELS = ['bg-[#1c1913] text-[#faf6ef]', 'bg-[#fffdf8] text-[#1c1913]', 'bg-[#c2410c] text-[#fff7ed]', 'bg-[#efe7d3] text-[#1c1913]'];
-const SUB = ['text-neutral-400', 'text-neutral-500', 'text-orange-100', 'text-neutral-500'];
+const ART = [
+  'from-[#101d42] to-[#2563eb]',
+  'from-[#3b0764] to-[#7c3aed]',
+  'from-[#082f2e] to-[#0d9488]',
+  'from-[#431407] to-[#ea580c]',
+];
 
 export const Projects = () => (
-  <section id="projects" className="pt-20">
+  <section id="projects" className="mx-auto max-w-7xl px-5 sm:px-10 pt-16">
     <Reveal>
-      <div className="flex items-end justify-between mb-8">
-        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Selected <span className="font-serif-d italic font-normal accent">work</span></h2>
-        <span className="font-mono-d text-xs text-neutral-500">Scroll — the panels stack</span>
+      <h2 className="text-2xl sm:text-[28px] font-semibold">Continue Exploring</h2>
+      <p className="text-sm text-neutral-400 mt-1">The Originals — every one built end to end, most of them live.</p>
+    </Reveal>
+    <Reveal delay={100}>
+      <div className="mt-6 flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-5 px-5 sm:mx-0 sm:px-0">
+        {PROJECTS.map((p, i) => (
+          <a key={p.id} href={`#original-${p.id}`} className={`poster relative shrink-0 w-[270px] sm:w-[320px] aspect-[16/10] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end`}>
+            <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
+            <span className="absolute top-4 right-5 font-serif-d italic text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
+            <h3 className="text-xl font-bold leading-tight drop-shadow">{p.title}</h3>
+            <p className="text-[13px] text-white/85 mt-1 line-clamp-2">{p.subtitle}</p>
+            <p className="font-mono-d text-[10px] uppercase tracking-widest text-white/70 mt-2.5">{p.category} · {p.year}</p>
+          </a>
+        ))}
       </div>
     </Reveal>
-    <div className="pb-10">
+
+    <div className="pt-10 space-y-6">
       {PROJECTS.map((p, i) => (
-        <article key={p.id} className={`stack-card ${PANELS[i % 4]} rounded-2xl px-6 py-9 sm:px-10 sm:py-12 mb-8 border border-black/10`}>
-          <div className="flex items-start justify-between gap-6">
-            <span className="font-serif-d italic text-5xl sm:text-6xl opacity-90">{String(i + 1).padStart(2, '0')}</span>
-            <span className="font-mono-d text-[11px] uppercase tracking-widest opacity-70 text-right">{p.category}<br />{p.year}</span>
-          </div>
-          <h3 className="mt-5 text-3xl sm:text-[40px] font-semibold tracking-tight leading-tight">{p.title}</h3>
-          <p className={`mt-1.5 text-[16px] ${SUB[i % 4]}`}>{p.subtitle}{p.statusText ? <> — <span className="font-medium">{p.statusText}</span></> : null}</p>
-          <p className="mt-5 text-[16.5px] leading-relaxed max-w-3xl opacity-92">{p.shortDescription}</p>
-          <ul className="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-[14.5px] max-w-4xl">
-            {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span>—</span><span className="opacity-85">{h}</span></li>)}
-          </ul>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-current/15 pt-5">
-            <p className="font-mono-d text-[11px] uppercase tracking-wider opacity-70">{p.technologies.join('  ·  ')}</p>
-            <div className="flex gap-6 text-sm font-semibold">
-              {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-70 transition-opacity">Live site ↗</a>}
-              <a href={p.githubUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:opacity-70 transition-opacity">GitHub ↗</a>
+        <Reveal key={p.id}>
+          <article id={`original-${p.id}`} className="rounded-2xl bg-[#0b1128] border rule p-6 sm:p-10 scroll-mt-24">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{p.title}</h3>
+              <span className="font-mono-d text-[11px] uppercase tracking-widest text-neutral-400">{p.category} · {p.year}{p.statusText ? ` · ${p.statusText}` : ''}</span>
             </div>
-          </div>
-        </article>
+            <p className="mt-1.5 text-neutral-400">{p.subtitle}</p>
+            <p className="mt-4 text-[16px] leading-relaxed text-neutral-200 max-w-3xl">{p.shortDescription}</p>
+            <ul className="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-[14.5px] text-neutral-300 max-w-4xl">
+              {p.highlights.map(h => <li key={h} className="flex gap-2.5"><span className="accent">—</span><span>{h}</span></li>)}
+            </ul>
+            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t rule pt-5">
+              <p className="font-mono-d text-[11px] uppercase tracking-wider text-neutral-500">{p.technologies.join('  ·  ')}</p>
+              <div className="flex gap-4 text-sm font-semibold">
+                {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="bg-white text-black px-4 py-2 rounded-md hover:bg-neutral-200 transition-colors">▶ Live Site</a>}
+                <a href={p.githubUrl} target="_blank" rel="noreferrer" className="bg-white/12 px-4 py-2 rounded-md hover:bg-white/22 transition-colors">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+        </Reveal>
       ))}
     </div>
   </section>

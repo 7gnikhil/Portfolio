@@ -1,39 +1,46 @@
-import { CERTIFICATIONS, EDUCATION, EXPERIENCE, PERSONAL_INFO } from '../data/portfolioData';
+import { EDUCATION, EXPERIENCE, PERSONAL_INFO } from '../data/portfolioData';
 import { Reveal } from './Reveal';
 
 export const About = () => (
-  <section id="about" className="pt-20">
-    <div className="grid md:grid-cols-[1fr_1.6fr] gap-10">
-      <Reveal><h2 className="text-4xl sm:text-5xl font-bold tracking-tight">About</h2></Reveal>
-      <div>
-        <Reveal>
-          <p className="text-lg leading-relaxed text-neutral-700">
-            Final-year {PERSONAL_INFO.degree} student at {PERSONAL_INFO.university} (CGPA {PERSONAL_INFO.cgpa}).
-            I learn by shipping — a live community platform, a released browser extension, and a production site for a real client came out of that, not coursework alone.
+  <section id="about" className="mx-auto max-w-7xl px-5 sm:px-10 pt-20">
+    <Reveal><h2 className="text-2xl sm:text-[28px] font-semibold">The Journey</h2></Reveal>
+    <div className="mt-8 grid lg:grid-cols-[1.2fr_1fr] gap-10">
+      <Reveal>
+        <div className="space-y-0">
+          <div className="relative pl-8 pb-9 border-l border-[#232c4d]">
+            <span className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full bg-[#1f80e0]" />
+            <p className="font-mono-d text-xs uppercase tracking-widest text-neutral-400">Now · Class of 2027</p>
+            <h3 className="mt-2 font-semibold text-lg">{PERSONAL_INFO.university}</h3>
+            <p className="text-neutral-400 text-[15px] mt-1">{PERSONAL_INFO.degree} — CGPA {PERSONAL_INFO.cgpa}. Shipping OneUco and the Fraud Detector extension alongside final-year coursework.</p>
+          </div>
+          <div className="relative pl-8 pb-9 border-l border-[#232c4d]">
+            <span className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full bg-white/70" />
+            <p className="font-mono-d text-xs uppercase tracking-widest text-neutral-400">Experience</p>
+            <h3 className="mt-2 font-semibold text-lg">{EXPERIENCE.role}</h3>
+            <p className="text-neutral-400 text-[15px] mt-1">{EXPERIENCE.detail}</p>
+          </div>
+          <div className="relative pl-8 border-l border-transparent">
+            <span className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full bg-white/40" />
+            <p className="font-mono-d text-xs uppercase tracking-widest text-neutral-400">Training · Apr – Nov 2025</p>
+            <h3 className="mt-2 font-semibold text-lg">Codegnan, Hyderabad</h3>
+            <p className="text-neutral-400 text-[15px] mt-1">Python Full Stack Development Trainee.</p>
+          </div>
+        </div>
+      </Reveal>
+      <Reveal delay={100}>
+        <div className="rounded-2xl bg-[#0b1128] border rule p-7">
+          <h3 className="font-mono-d text-xs uppercase tracking-widest accent">About this series</h3>
+          <p className="mt-4 text-[16px] leading-relaxed text-neutral-200">
+            I learn by shipping. A live community platform used by real students, a browser extension released to the public, and a production website for a real manufacturing client — that&rsquo;s the story so far. Next season: a fresher role in software or AI/ML, anywhere in India or remote.
           </p>
-        </Reveal>
-        <Reveal delay={60}>
-          <h3 className="font-mono-d text-xs uppercase tracking-widest accent mt-12 mb-4">Experience</h3>
-          <p className="text-[16px] leading-relaxed"><span className="font-semibold">{EXPERIENCE.role}</span> — {EXPERIENCE.detail}</p>
-        </Reveal>
-        <Reveal delay={60}>
-          <h3 className="font-mono-d text-xs uppercase tracking-widest accent mt-12 mb-4">Education & training</h3>
-          {EDUCATION.map(e => (
-            <div key={e.place} className="flex flex-wrap items-baseline justify-between gap-x-6 border-b rule py-3.5">
-              <p className="text-[15.5px]"><span className="font-semibold">{e.place}</span> <span className="text-neutral-500">— {e.what}</span></p>
-              <span className="font-mono-d text-xs text-neutral-500">{e.when}</span>
-            </div>
-          ))}
-        </Reveal>
-        <Reveal delay={60}>
-          <h3 className="font-mono-d text-xs uppercase tracking-widest accent mt-12 mb-4">Certifications</h3>
-          <ul className="space-y-2.5 text-[15.5px] text-neutral-700">
-            {CERTIFICATIONS.map(c => (
-              <li key={c.id} className="flex gap-3"><span className="accent">—</span><span>{c.title} <span className="text-neutral-500">({c.issuer}{c.year ? `, ${c.year}` : ''})</span></span></li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
+          <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
+            <div><dt className="text-neutral-500">Based in</dt><dd className="mt-0.5 font-medium">{PERSONAL_INFO.location}</dd></div>
+            <div><dt className="text-neutral-500">Graduating</dt><dd className="mt-0.5 font-medium">{PERSONAL_INFO.graduationYear}</dd></div>
+            <div><dt className="text-neutral-500">Degree</dt><dd className="mt-0.5 font-medium">B.Tech, AI &amp; ML</dd></div>
+            <div><dt className="text-neutral-500">Open to</dt><dd className="mt-0.5 font-medium">Pan-India · Remote · Hybrid</dd></div>
+          </dl>
+        </div>
+      </Reveal>
     </div>
   </section>
 );

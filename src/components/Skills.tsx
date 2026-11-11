@@ -1,21 +1,41 @@
-import { SKILL_CATEGORIES } from '../data/portfolioData';
+import { CERTIFICATIONS, SKILL_CATEGORIES } from '../data/portfolioData';
 import { Reveal } from './Reveal';
 
 export const Skills = () => (
-  <section id="skills" className="pt-20">
-    <Reveal><h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">What I <span className="font-serif-d italic font-normal accent">work with</span></h2></Reveal>
-    <div>
-      {SKILL_CATEGORIES.map((c, i) => (
-        <Reveal key={c.category} delay={i * 80}>
-          <div className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-5 border-b rule">
-            <h3 className="font-mono-d text-xs uppercase tracking-widest accent pt-1.5">{c.category}</h3>
-            <div>
-              <p className="text-[16px] leading-relaxed">{c.skills.join(', ')}</p>
-              <div className="mt-3 h-[3px] bg-[#ece3cd] overflow-hidden"><div className="bar-anim h-full bg-[#c2410c]" style={{ width: `${92 - i * 9}%` }} /></div>
+  <>
+    <section id="skills" className="mx-auto max-w-7xl px-5 sm:px-10 pt-20">
+      <Reveal><h2 className="text-2xl sm:text-[28px] font-semibold">Skills, by Category</h2></Reveal>
+      <div className="mt-6 grid sm:grid-cols-2 gap-4">
+        {SKILL_CATEGORIES.map((c, i) => (
+          <Reveal key={c.category} delay={i * 70}>
+            <div className="h-full rounded-xl bg-[#0b1128] border rule p-6 hover:border-[#3fa9f5]/50 transition-colors">
+              <h3 className="font-mono-d text-xs uppercase tracking-widest accent">{c.category}</h3>
+              <p className="mt-3.5 text-[15.5px] leading-relaxed text-neutral-200">{c.skills.join(', ')}</p>
             </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+    <section id="picks" className="mx-auto max-w-7xl px-5 sm:px-10 pt-16">
+      <Reveal>
+        <h2 className="text-2xl sm:text-[28px] font-semibold">Top Picks for Recruiters</h2>
+        <p className="text-sm text-neutral-400 mt-1">Certifications, verified.</p>
+      </Reveal>
+      <Reveal delay={90}>
+        <div className="mt-6 flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-5 px-5 sm:mx-0 sm:px-0">
+          {CERTIFICATIONS.map(c => (
+            <div key={c.id} className="poster shrink-0 w-[260px] rounded-xl bg-gradient-to-br from-[#131c3f] to-[#0a0f26] border rule p-5">
+              <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-neutral-400">{c.issuer}</p>
+              <p className="mt-3 font-semibold leading-snug">{c.title}</p>
+              {c.year && <p className="mt-3 text-sm text-neutral-400">{c.year}</p>}
+            </div>
+          ))}
+          <div className="poster shrink-0 w-[260px] rounded-xl bg-gradient-to-br from-[#12283f] to-[#0a1626] border rule p-5">
+            <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-neutral-400">Experience</p>
+            <p className="mt-3 font-semibold leading-snug">Tech Lead Intern — VISWAM.AI, leading 20+ students</p>
           </div>
-        </Reveal>
-      ))}
-    </div>
-  </section>
+        </div>
+      </Reveal>
+    </section>
+  </>
 );
