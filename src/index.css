@@ -37,3 +37,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .reveal, .rise { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(22px) scale(.98); } to { opacity: 1; transform: none; } }
+.modal-in { animation: modalIn .32s cubic-bezier(.22,1,.36,1) both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.fade-in { animation: fadeIn .25s ease both; }

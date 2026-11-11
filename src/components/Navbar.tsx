@@ -3,9 +3,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 const LINKS = [
   { name: 'Home', href: '#top' },
   { name: 'Originals', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Journey', href: '#about' },
-  { name: 'Top Picks', href: '#picks' },
+  { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
 ];
 export const Navbar = () => {
