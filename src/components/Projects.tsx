@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS, type Project } from '../data/portfolioData';
 import { Reveal } from './Reveal';
 
@@ -26,21 +27,30 @@ export const Projects = () => {
       <Reveal delay={100}>
         <div className="mt-6 grid grid-cols-2 xl:grid-cols-4 gap-4">
           {PROJECTS.map((proj, i) => (
-            <button key={proj.id} onClick={() => setSel(i)} className={`poster relative text-left aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end w-full`}>
+            <motion.button key={proj.id} onClick={() => setSel(i)} whileHover={{ scale: 1.07, y: -6 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 320, damping: 22 }} className={`poster relative text-left aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end w-full`}>
+              <span className="poster-shade absolute inset-0 pointer-events-none" />
               <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
               <span className="absolute top-3.5 right-5 font-serif-d italic text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="text-xl font-bold leading-tight drop-shadow">{proj.title}</h3>
-              <p className="text-[13px] text-white/85 mt-1">{proj.subtitle}</p>
-              <p className="font-mono-d text-[10px] uppercase tracking-widest text-white/70 mt-2.5">{proj.statusText ?? proj.category}</p>
-            </button>
+              <span className="poster-title relative">
+                <h3 className="text-xl font-bold leading-tight drop-shadow">{proj.title}</h3>
+                <p className="text-[13px] text-white/85 mt-1">{proj.subtitle}</p>
+                <p className="font-mono-d text-[10px] uppercase tracking-widest text-white/70 mt-2.5">{proj.statusText ?? proj.category}</p>
+              </span>
+              <span className="poster-actions relative mt-4 flex items-center gap-2.5">
+                <span className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center text-sm font-bold">▶</span>
+                <span className="text-xs font-semibold bg-black/45 border border-white/35 rounded-full px-3 py-1.5">Details ⓘ</span>
+                {proj.liveUrl && <span className="text-xs font-semibold bg-black/45 border border-white/35 rounded-full px-3 py-1.5">Live ↗</span>}
+              </span>
+            </motion.button>
           ))}
         </div>
       </Reveal>
 
+      <AnimatePresence>
       {p && (
         <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-6">
-          <div className="fade-in absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={() => setSel(null)} />
-          <div className="modal-in relative w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-[#0b1128] border rule">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={() => setSel(null)} />
+          <motion.div initial={{ opacity: 0, y: 46, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30, scale: 0.98 }} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-[#0b1128] border rule">
             <div className={`relative bg-gradient-to-br ${ART[sel! % 4]} px-7 pt-10 pb-8`}>
               <button onClick={() => setSel(null)} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 text-white text-lg leading-none hover:bg-black/80 transition-colors">×</button>
               <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-white/75">N Originals · {p.year}</p>
@@ -58,9 +68,10 @@ export const Projects = () => {
               </ul>
               <p className="mt-6 font-mono-d text-[11px] uppercase tracking-wider text-neutral-500">{p.technologies.join('  ·  ')}</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
+      </AnimatePresence>
     </section>
   );
 };

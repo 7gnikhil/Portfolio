@@ -44,3 +44,14 @@ body {
 .modal-in { animation: modalIn .32s cubic-bezier(.22,1,.36,1) both; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .fade-in { animation: fadeIn .25s ease both; }
+
+/* ---- Netflix-style poster hover: grow, lift, reveal quick actions ---- */
+.poster { position: relative; }
+.poster:hover { box-shadow: 0 30px 55px -16px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.22); z-index: 5; }
+.poster .poster-shade { opacity: 0; transition: opacity .3s ease; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.88) 88%); }
+.poster:hover .poster-shade { opacity: 1; }
+.poster .poster-actions { opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }
+.poster:hover .poster-actions { opacity: 1; transform: none; }
+.poster .poster-title { transition: transform .3s cubic-bezier(.22,1,.36,1); }
+.poster:hover .poster-title { transform: translateY(-2px); }
+@media (hover: none) { .poster:hover { transform: none; } .poster .poster-shade, .poster .poster-actions { opacity: 1; transform: none; } }
