@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS, type Project } from '../data/portfolioData';
 import { Reveal } from './Reveal';
+import { COVERS } from '../assets/covers';
 
 const ART = [
   'from-[#101d42] to-[#2563eb]',
@@ -28,6 +29,8 @@ export const Projects = () => {
         <div className="mt-6 flex xl:grid xl:grid-cols-4 gap-4 overflow-x-auto xl:overflow-visible no-scrollbar snap-x snap-mandatory xl:snap-none -mx-5 px-5 sm:mx-0 sm:px-0 pb-2 xl:pb-0">
           {PROJECTS.map((proj, i) => (
             <motion.button key={proj.id} onClick={() => setSel(i)} whileHover={{ scale: 1.07, y: -6 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 320, damping: 22 }} className={`poster relative text-left aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end shrink-0 snap-start w-[80vw] min-[520px]:w-[320px] xl:w-auto`}>
+              <img src={COVERS[proj.id]} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <span className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-black/10 pointer-events-none" />
               <span className="poster-shade absolute inset-0 pointer-events-none" />
               <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
               <span className="absolute top-3.5 right-5 font-serif-d italic text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
@@ -51,7 +54,10 @@ export const Projects = () => {
         <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-6">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={() => setSel(null)} />
           <motion.div initial={{ opacity: 0, y: 46, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 30, scale: 0.98 }} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-[#0b1128] border rule">
-            <div className={`relative bg-gradient-to-br ${ART[sel! % 4]} px-7 pt-10 pb-8`}>
+            <div className={`relative bg-gradient-to-br ${ART[sel! % 4]} px-7 pt-10 pb-8 overflow-hidden`}>
+              <img src={COVERS[p.id]} alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15" />
+              <div className="relative">
               <button onClick={() => setSel(null)} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/55 text-white text-lg leading-none hover:bg-black/80 transition-colors">×</button>
               <p className="font-mono-d text-[10px] uppercase tracking-[.25em] text-white/75">N Originals · {p.year}</p>
               <h3 className="font-display mt-2.5 text-3xl sm:text-4xl font-bold leading-tight">{p.title}</h3>
@@ -59,6 +65,7 @@ export const Projects = () => {
               <div className="mt-6 flex flex-wrap gap-3.5">
                 {p.liveUrl && <a href={p.liveUrl} target="_blank" rel="noreferrer" className="bg-white text-black font-semibold px-5 py-2.5 rounded-md hover:bg-neutral-200 transition-colors">▶ Live Site</a>}
                 <a href={p.githubUrl} target="_blank" rel="noreferrer" className="bg-black/35 font-semibold px-5 py-2.5 rounded-md hover:bg-black/55 transition-colors">GitHub ↗</a>
+              </div>
               </div>
             </div>
             <div className="px-7 py-7">
