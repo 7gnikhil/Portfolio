@@ -14,7 +14,7 @@ const THEMES: Record<string, { wall: string; floor: string; accent: string; glow
 };
 
 const SLOTS = [
-  { icon: '📺', label: 'The TV', style: { left: '6%', top: '36%' } },
+  { icon: '📺', label: 'The TV', style: { left: '6%', top: '43%' } },
   { icon: '💻', label: 'The laptop', style: { right: '8%', top: '54%' } },
   { icon: '🖼️', label: 'The wall frame', style: { left: '45%', top: '15%' } },
   { icon: '🛋️', label: 'The sofa', style: { left: '28%', top: '60%' } },
@@ -22,6 +22,7 @@ const SLOTS = [
 ];
 
 const FLOOR_ORDER = ['oneuco', 'fraud-detection', 'maruthi-toolings', 'musicmitra'];
+const SHORT: Record<string, string> = { oneuco: 'OneUco', 'fraud-detection': 'Fraud Detector', 'maruthi-toolings': 'Maruthi Toolings', musicmitra: 'MusicMitra' };
 const byId = (id: string) => PROJECTS.find(p => p.id === id)!;
 
 /** A T-shirt on the terrace line — clicking goes STRAIGHT to the live site / GitHub. */
@@ -36,14 +37,14 @@ function Shirt({ proj, i }: { proj: Project; i: number }) {
         </defs>
         <g clipPath={`url(#${clipId})`}>
           <rect width="100" height="96" fill="#f4f4f5" />
-          <image href={GALLERY[proj.id][0]} x="24" y="30" width="52" height="58" preserveAspectRatio="xMidYMid slice" />
+          <image href={GALLERY[proj.id][0]} x="21" y="27" width="58" height="61" preserveAspectRatio="xMidYMid slice" />
           <rect width="100" height="96" fill="black" opacity="0.06" />
         </g>
         <path d="M36 12 L14 26 L24 42 L31 38 L31 88 L69 88 L69 38 L76 42 L86 26 L64 12 Q50 24 36 12 Z" fill="none" stroke="rgba(0,0,0,.35)" strokeWidth="1.6" />
         <circle cx="36" cy="11" r="2.4" fill="#cbd5e1" stroke="rgba(0,0,0,.4)" />
         <circle cx="64" cy="11" r="2.4" fill="#cbd5e1" stroke="rgba(0,0,0,.4)" />
       </svg>
-      <span className="mt-1 block text-center font-display font-bold text-[10px] sm:text-xs text-white leading-tight">{proj.title}</span>
+      <span className="mt-1 block text-center font-display font-bold text-[10px] sm:text-xs text-white leading-tight whitespace-nowrap">{SHORT[proj.id]}</span>
       <span className="block text-center font-mono-d text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-[#7dd3fc]">{proj.liveUrl ? 'Live site ↗' : 'GitHub ↗'}</span>
     </a>
   );
@@ -73,15 +74,15 @@ function InteriorPage({ proj, onBack }: { proj: Project; onBack: () => void }) {
       </div>
 
       {/* The hall */}
-      <div className="relative h-[46dvh] min-h-[330px] mt-5 rounded-2xl overflow-hidden border border-white/12 shadow-[0_24px_60px_rgba(0,0,0,.5)]" style={{ background: theme.wall }}>
+      <div className="relative h-[54dvh] min-h-[300px] sm:h-[46dvh] mt-4 sm:mt-5 rounded-2xl overflow-hidden border border-white/12 shadow-[0_24px_60px_rgba(0,0,0,.5)]" style={{ background: theme.wall }}>
         <div className="absolute inset-x-0 bottom-0 h-[24%]" style={{ background: `linear-gradient(180deg, ${theme.floor}, #17110b)` }} />
         <div className="absolute inset-x-0 bottom-[24%] h-[3px] bg-black/35" />
-        <div className="absolute left-[5%] top-[9%] w-28 h-32 sm:w-36 sm:h-40 rounded-md border-4 border-[#0c1226] bg-gradient-to-b from-sky-300/50 to-sky-600/30 flex items-center justify-center text-4xl sm:text-5xl shadow-inner">{theme.view}</div>
+        <div className="absolute left-[5%] top-[8%] w-24 h-28 sm:w-36 sm:h-40 rounded-md border-4 border-[#0c1226] bg-gradient-to-b from-sky-300/50 to-sky-600/30 flex items-center justify-center text-4xl sm:text-5xl shadow-inner">{theme.view}</div>
         {items.map((it, i) => (
           <button key={it.label} onClick={() => setActive(i)} style={it.style} aria-label={it.label}
             className={`absolute flex flex-col items-center gap-1 transition-all duration-300 ${active === i ? 'scale-125' : 'hover:scale-110 opacity-90'}`}>
-            <span className="text-5xl sm:text-6xl" style={active === i ? { filter: `drop-shadow(0 0 16px ${theme.glow})` } : undefined}>{it.icon}</span>
-            <span className={`font-mono-d text-[8.5px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${active === i ? 'bg-white text-black font-bold' : 'bg-black/45 text-white/80'}`}>{it.label}</span>
+            <span className="text-[34px] sm:text-6xl" style={active === i ? { filter: `drop-shadow(0 0 16px ${theme.glow})` } : undefined}>{it.icon}</span>
+            <span className={`font-mono-d text-[8.5px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${active === i ? 'bg-white text-black font-bold' : 'bg-black/45 text-white/80 hidden sm:block'}`}>{it.label}</span>
           </button>
         ))}
         <span className="absolute bottom-[3%] left-1/2 -translate-x-1/2 font-mono-d text-[9px] sm:text-[10px] uppercase tracking-[.3em] text-white/45 whitespace-nowrap">Tap an item in the hall</span>
@@ -130,9 +131,9 @@ export const Apartment = () => {
           <div className="relative mt-6">
             <div className="flex items-end justify-between px-1 sm:px-4">
               <span className="font-mono-d text-[9px] sm:text-[10px] uppercase tracking-[.3em] text-neutral-400">The Terrace — dandem</span>
-              <span className="font-mono-d text-[9px] sm:text-[10px] uppercase tracking-[.3em] text-neutral-500">Shirt = live link, no detours</span>
+              <span className="font-mono-d text-[9px] sm:text-[10px] uppercase tracking-[.3em] text-neutral-500">Shirt = live ↗</span>
             </div>
-            <div className="relative mt-1 h-[128px] sm:h-[168px]">
+            <div className="relative mt-1 h-[124px] sm:h-[168px]">
               <svg className="absolute inset-x-0 top-0 w-full h-9" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M0 2 Q50 12 100 2" fill="none" stroke="#94a3b8" strokeWidth="0.7" />
               </svg>
@@ -157,7 +158,7 @@ export const Apartment = () => {
               const proj = byId(id);
               const theme = THEMES[id];
               return (
-                <button key={id} onClick={() => setInside(proj)} className="group relative w-full min-h-[72px] sm:min-h-[84px] flex items-center gap-3 px-4 sm:px-6 py-3 border-b border-black/40 hover:bg-white/6 transition-colors text-left">
+                <button key={id} onClick={() => setInside(proj)} className="group relative w-full min-h-[68px] sm:min-h-[84px] flex items-center gap-2.5 sm:gap-3 px-3 sm:px-6 py-3 border-b border-black/40 hover:bg-white/6 transition-colors text-left">
                   <span className="font-mono-d text-[11px] text-neutral-400 w-7">{4 - i}F</span>
                   <span className="hidden sm:flex gap-1.5">
                     <span className="w-6 h-9 rounded-[3px] bg-amber-200/85 border border-black/40" style={{ boxShadow: `0 0 12px ${theme.glow}` }} />
@@ -165,7 +166,7 @@ export const Apartment = () => {
                     <span className="w-6 h-9 rounded-[3px] bg-amber-100/70 border border-black/40" />
                   </span>
                   <span className="mx-auto sm:mx-0 text-center sm:text-left">
-                    <span className="block bg-black/40 border border-white/15 rounded-lg px-4 py-2 font-display font-bold text-base sm:text-xl tracking-wide group-hover:border-white/45 transition-colors">{proj.title}</span>
+                    <span className="block bg-black/40 border border-white/15 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 font-display font-bold text-[15px] sm:text-xl tracking-wide group-hover:border-white/45 transition-colors">{proj.title}</span>
                     <span className="mt-1 block text-[11px] sm:text-xs text-neutral-400">{proj.subtitle}</span>
                   </span>
                   <span className="ml-auto font-mono-d text-[10px] uppercase tracking-widest hidden sm:block" style={{ color: theme.accent }}>Step inside <ArrowRight className="inline w-3.5 h-3.5" /></span>

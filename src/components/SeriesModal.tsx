@@ -13,14 +13,14 @@ export const SeriesModal = ({ open, onPlay, onClose }: { open: boolean; onPlay: 
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 12 }}
           transition={{ type: 'spring', stiffness: 210, damping: 24 }}
-          className="relative mx-auto my-[4dvh] w-[min(680px,94vw)] bg-[#0a0f26] border rule rounded-2xl overflow-hidden shadow-2xl"
+          className="relative mx-auto my-[2.5dvh] sm:my-[4dvh] w-[min(680px,94vw)] bg-[#0a0f26] border rule rounded-2xl overflow-hidden shadow-2xl"
           role="dialog" aria-modal="true" aria-label="Nikhil — An AI Developer Series"
         >
           <div className="grid sm:grid-cols-[250px_1fr]">
-            <div className="relative h-52 sm:h-auto sm:min-h-[340px]">
-              <img src={PORTRAIT} alt="Nikhil Chowdhary Ghanta" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="relative h-[270px] sm:h-auto sm:min-h-[340px]">
+              <img src={PORTRAIT} alt="Nikhil Chowdhary Ghanta" className="absolute inset-0 w-full h-full object-cover object-[50%_20%] sm:object-top" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f26]/70 via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-[#0a0f26]/25" />
-              <button onClick={onPlay} aria-label="Play" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/95 text-black flex items-center justify-center text-2xl shadow-[0_12px_40px_rgba(0,0,0,.5)] hover:scale-110 transition-transform">▶</button>
+              <button onClick={onPlay} aria-label="Play" className="absolute bottom-3 right-3 sm:bottom-auto sm:right-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/95 text-black flex items-center justify-center text-lg sm:text-2xl shadow-[0_12px_40px_rgba(0,0,0,.5)] hover:scale-110 transition-transform">▶</button>
             </div>
             <div className="relative px-6 pt-5 pb-1 sm:py-6">
               <button onClick={onClose} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 flex items-center justify-center hover:bg-black/85 transition-colors"><X className="w-5 h-5" /></button>

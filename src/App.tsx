@@ -44,19 +44,19 @@ export function App() {
       />
       <Navbar />
       {view === 'home' ? (
-        <main className="flex-1 min-h-0 flex flex-col w-full">
+        <main className="flex-1 min-h-0 flex flex-col w-full overflow-y-auto">
           <Hero />
           <div className="flex-1 min-h-0 flex items-center justify-center px-5 pb-4">
-            <button onClick={() => setView('apartment')} className="group w-full max-w-3xl text-left rounded-2xl border rule bg-gradient-to-b from-[#131c3f] to-[#0a0f26] px-6 py-6 sm:py-8 hover:border-white/35 transition-colors shadow-[0_24px_60px_rgba(0,0,0,.45)]">
+            <button onClick={() => setView('apartment')} className="group w-full max-w-3xl text-left rounded-2xl border rule bg-gradient-to-b from-[#131c3f] to-[#0a0f26] px-5 py-5 sm:px-6 sm:py-8 hover:border-white/35 transition-colors shadow-[0_24px_60px_rgba(0,0,0,.45)]">
               <p className="font-mono-d text-[10px] uppercase tracking-[.3em] text-neutral-400">Now showing — the Originals</p>
-              <p className="mt-2 font-display font-extrabold text-2xl sm:text-4xl tracking-tight">🏢 Four projects. Four floors. <span className="text-[#7dd3fc]">One apartment.</span></p>
+              <p className="mt-2 font-display font-extrabold text-[21px] leading-snug sm:text-4xl tracking-tight">🏢 Four projects. Four floors. <span className="text-[#7dd3fc]">One apartment.</span></p>
               <p className="mt-2 text-sm text-neutral-400 max-w-xl">Shirts on the terrace fly you straight to each live project. Step into a floor and the hall furniture tells you its features.</p>
               <span className="mt-4 inline-flex items-center gap-2 bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full group-hover:bg-neutral-200 transition-colors">Visit the apartment <ArrowRight className="w-4 h-4" /></span>
             </button>
           </div>
         </main>
       ) : (
-        <main className="flex-1 min-h-0 overflow-y-auto w-full px-4 sm:px-6 pt-[84px] pb-20 sm:pb-10">
+        <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-full px-4 sm:px-6 pt-[84px] pb-20 sm:pb-10">
           <Apartment />
         </main>
       )}
