@@ -6,8 +6,7 @@ import { Intro } from './components/Intro';
 import { SeriesModal } from './components/SeriesModal';
 import { BottomNav } from './components/BottomNav';
 import { Hero } from './components/Hero';
-import { Projects } from './components/Projects';
-import { Skills } from './components/Skills';
+import { Apartment } from './components/Apartment';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 
@@ -38,12 +37,9 @@ export function App() {
         onClose={() => setSeries(false)}
       />
       <Navbar />
-      <main className="flex-1 min-h-0 flex flex-col justify-between w-full">
+      <main className="flex-1 min-h-0 flex flex-col w-full">
         <Hero />
-        <div>
-          <Projects />
-          <Skills />
-        </div>
+        <Apartment />
       </main>
       <BottomNav />
       <AnimatePresence>

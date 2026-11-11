@@ -59,3 +59,6 @@ body {
 .font-display { font-family: "Inter", system-ui, sans-serif; letter-spacing: -0.02em; }
 
 html, body { height: 100%; overscroll-behavior: none; }
+
+@keyframes sway { 0%,100% { transform: rotate(1.8deg); } 50% { transform: rotate(-1.8deg); } }
+.sway { transform-origin: 50% 0; animation: sway 5.5s ease-in-out infinite; }

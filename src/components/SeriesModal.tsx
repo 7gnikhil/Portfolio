@@ -16,15 +16,17 @@ export const SeriesModal = ({ open, onPlay, onClose }: { open: boolean; onPlay: 
           className="relative mx-auto my-[4dvh] w-[min(680px,94vw)] bg-[#0a0f26] border rule rounded-2xl overflow-hidden shadow-2xl"
           role="dialog" aria-modal="true" aria-label="Nikhil — An AI Developer Series"
         >
-          <div className="relative h-60 sm:h-72">
-            <img src={PORTRAIT} alt="Nikhil Chowdhary Ghanta" className="absolute inset-0 w-full h-full object-cover object-top" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f26] via-[#0a0f26]/25 to-transparent" />
-            <button onClick={onClose} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 flex items-center justify-center hover:bg-black/85 transition-colors"><X className="w-5 h-5" /></button>
-            <div className="absolute bottom-4 left-6 right-6">
+          <div className="grid sm:grid-cols-[250px_1fr]">
+            <div className="relative h-52 sm:h-auto sm:min-h-[340px]">
+              <img src={PORTRAIT} alt="Nikhil Chowdhary Ghanta" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f26]/70 via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-[#0a0f26]/25" />
+              <button onClick={onPlay} aria-label="Play" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/95 text-black flex items-center justify-center text-2xl shadow-[0_12px_40px_rgba(0,0,0,.5)] hover:scale-110 transition-transform">▶</button>
+            </div>
+            <div className="relative px-6 pt-5 pb-1 sm:py-6">
+              <button onClick={onClose} aria-label="Close" className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 flex items-center justify-center hover:bg-black/85 transition-colors"><X className="w-5 h-5" /></button>
               <p className="font-mono-d text-[10px] uppercase tracking-[.35em] text-[#7dd3fc] font-semibold">An AI Developer Series</p>
               <h2 className="font-display mt-1.5 text-4xl sm:text-5xl font-extrabold uppercase tracking-tight">Nikhil</h2>
             </div>
-            <button onClick={onPlay} aria-label="Play" className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/95 text-black flex items-center justify-center text-2xl shadow-[0_12px_40px_rgba(0,0,0,.5)] hover:scale-110 transition-transform">▶</button>
           </div>
           <div className="px-6 py-6">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-neutral-300">
