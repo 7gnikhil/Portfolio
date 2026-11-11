@@ -25,9 +25,9 @@ export const Projects = () => {
         <p className="text-sm text-neutral-400 mt-1">Tap a poster — details open like a title page. No resume, promise.</p>
       </Reveal>
       <Reveal delay={100}>
-        <div className="mt-6 grid grid-cols-1 min-[520px]:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="mt-6 flex xl:grid xl:grid-cols-4 gap-4 overflow-x-auto xl:overflow-visible no-scrollbar snap-x snap-mandatory xl:snap-none -mx-5 px-5 sm:mx-0 sm:px-0 pb-2 xl:pb-0">
           {PROJECTS.map((proj, i) => (
-            <motion.button key={proj.id} onClick={() => setSel(i)} whileHover={{ scale: 1.07, y: -6 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 320, damping: 22 }} className={`poster relative text-left aspect-[16/9] min-[520px]:aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end w-full`}>
+            <motion.button key={proj.id} onClick={() => setSel(i)} whileHover={{ scale: 1.07, y: -6 }} whileTap={{ scale: 0.98 }} transition={{ type: 'spring', stiffness: 320, damping: 22 }} className={`poster relative text-left aspect-[16/10] xl:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br ${ART[i % 4]} p-5 flex flex-col justify-end shrink-0 snap-start w-[80vw] min-[520px]:w-[320px] xl:w-auto`}>
               <span className="poster-shade absolute inset-0 pointer-events-none" />
               <span className="absolute top-4 left-5 font-mono-d text-[10px] uppercase tracking-[.25em] text-white/70">N Originals</span>
               <span className="absolute top-3.5 right-5 font-serif-d italic text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>

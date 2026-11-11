@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
+import { PORTRAIT } from '../assets/portrait';
 
 const parent = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } } };
 const item = { hidden: { opacity: 0, y: 34 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } } };
@@ -33,7 +34,7 @@ export const Hero = () => {
             He doesn&rsquo;t just study AI — he ships it. A student platform people use every day, a fraud detector that lives in your browser, and a website a real business runs on.
           </motion.p>
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-4">
-            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} href="#projects" className="inline-flex items-center gap-2.5 bg-white text-black font-semibold px-6 py-3 rounded-md">▶ Play Intro</motion.a>
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} href="#projects" className="inline-flex items-center justify-center gap-2.5 bg-white text-black font-semibold px-6 py-3 rounded-md w-full sm:w-auto">▶ Play Intro</motion.a>
             <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} href="#about" className="inline-flex items-center gap-2.5 bg-white/15 backdrop-blur font-semibold px-6 py-3 rounded-md">↓ About</motion.a>
             <motion.a whileHover={{ scale: 1.1, rotate: 6 }} href="#contact" aria-label="Contact" className="w-11 h-11 rounded-full border-2 border-white/50 flex items-center justify-center font-serif-d italic text-lg">i</motion.a>
           </motion.div>
@@ -42,10 +43,10 @@ export const Hero = () => {
           </motion.p>
         </motion.div>
         <motion.div style={{ y: portraitY, scale: portraitScale }} initial={{ opacity: 0, y: 44 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }} className="relative mx-auto w-full max-w-[320px] sm:max-w-[380px]">
-          <div className="relative rounded-2xl overflow-hidden border border-white/12 bg-gradient-to-b from-[#131c3f] via-[#0a0f26] to-[#040714] aspect-[4/5] flex flex-col items-center justify-center">
-            <span className="font-serif-d italic text-[120px] leading-none text-white/95">N</span>
-            <span className="mt-1 font-mono-d text-[11px] uppercase tracking-[.35em] text-neutral-400">Ghanta</span>
-            <span className="absolute bottom-5 font-mono-d text-[10px] uppercase tracking-widest text-neutral-500">Photo drops here — coming soon</span>
+          <div className="relative rounded-2xl overflow-hidden border border-white/12 aspect-[4/5] bg-[#0a0f26]">
+            <img src={PORTRAIT} alt="Nikhil Chowdhary Ghanta" className="absolute inset-0 w-full h-full object-cover object-top" />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#040714]/85 to-transparent" />
+            <span className="absolute bottom-4 left-0 right-0 text-center font-mono-d text-[10px] uppercase tracking-[.3em] text-white/85">Nikhil Chowdhary Ghanta</span>
           </div>
           <div className="float-y absolute left-2 sm:-left-4 top-8 sm:top-10 bg-white/10 backdrop-blur-md border border-white/15 rounded-lg px-3.5 py-2.5 text-xs">
             <p className="font-bold">OneUco</p><p className="text-neutral-400">Live — built solo</p>
